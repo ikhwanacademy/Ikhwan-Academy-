@@ -1,1023 +1,421 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-<title>Ultra Premium Portfolio</title>
+  <title>IKHWAN ACADEMY SPACE</title>
 
-<!-- Fonts -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script type="module" src="/src/main.jsx"></script>
 
-<!-- Icons -->
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
-
-<style>
-
-:root{
-  --primary:#38bdf8;
-  --secondary:#8b5cf6;
-  --dark:#050816;
-  --glass:rgba(255,255,255,.06);
-  --border:rgba(255,255,255,.08);
-  --white:#fff;
-}
-
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  scroll-behavior:smooth;
-  font-family:'Poppins',sans-serif;
-}
-
-body{
-  background:var(--dark);
-  color:white;
-  overflow-x:hidden;
-}
-
-img{
-  width:100%;
-  display:block;
-}
-
-a{
-  text-decoration:none;
-  color:inherit;
-}
-
-/* Background */
-
-.blur{
-  position:fixed;
-  width:350px;
-  height:350px;
-  border-radius:50%;
-  filter:blur(120px);
-  z-index:-1;
-  opacity:.3;
-}
-
-.blur.one{
-  background:#38bdf8;
-  top:-100px;
-  left:-100px;
-}
-
-.blur.two{
-  background:#8b5cf6;
-  bottom:-100px;
-  right:-100px;
-}
-
-/* Navbar */
-
-nav{
-  position:fixed;
-  width:100%;
-  top:0;
-  z-index:999;
-  padding:20px 8%;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  background:rgba(255,255,255,.04);
-  backdrop-filter:blur(20px);
-  border-bottom:1px solid var(--border);
-}
-
-.logo{
-  font-size:28px;
-  font-weight:800;
-  background:linear-gradient(to right,var(--primary),var(--secondary));
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-}
-
-nav ul{
-  display:flex;
-  gap:25px;
-  list-style:none;
-}
-
-nav ul li a{
-  transition:.3s;
-}
-
-nav ul li a:hover{
-  color:var(--primary);
-}
-
-/* Hero */
-
-.hero{
-  min-height:100vh;
-  display:flex;
-  align-items:center;
-  padding:140px 8% 80px;
-}
-
-.hero-wrapper{
-  width:100%;
-  display:grid;
-  grid-template-columns:1.2fr 1fr;
-  gap:60px;
-  align-items:center;
-}
-
-.hero-text h1{
-  font-size:75px;
-  line-height:1.1;
-  margin-bottom:25px;
-  background:linear-gradient(to right,#fff,var(--primary));
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-}
-
-.hero-text p{
-  line-height:2;
-  opacity:.85;
-  margin-bottom:30px;
-}
-
-.btn{
-  display:inline-block;
-  padding:16px 32px;
-  border-radius:50px;
-  background:linear-gradient(to right,var(--primary),var(--secondary));
-  color:white;
-  font-weight:600;
-  transition:.4s;
-}
-
-.btn:hover{
-  transform:translateY(-5px);
-}
-
-.hero-image{
-  background:var(--glass);
-  border:1px solid var(--border);
-  border-radius:35px;
-  padding:20px;
-  backdrop-filter:blur(15px);
-  animation:float 5s ease infinite;
-}
-
-.hero-image img{
-  border-radius:25px;
-  object-fit:cover;
-}
-
-@keyframes float{
-  0%,100%{transform:translateY(0);}
-  50%{transform:translateY(-15px);}
-}
-
-/* Section */
-
-section{
-  padding:100px 8%;
-}
-
-.section-title{
-  text-align:center;
-  margin-bottom:60px;
-}
-
-.section-title h2{
-  font-size:48px;
-  margin-bottom:15px;
-  background:linear-gradient(to right,var(--primary),var(--secondary));
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-}
-
-.section-title p{
-  opacity:.8;
-  max-width:700px;
-  margin:auto;
-  line-height:1.9;
-}
-
-/* Cards */
-
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-  gap:30px;
-}
-
-.card{
-  background:var(--glass);
-  border:1px solid var(--border);
-  border-radius:32px;
-  padding:35px;
-  backdrop-filter:blur(15px);
-  transition:.4s;
-}
-
-.card:hover{
-  transform:translateY(-10px);
-  box-shadow:0 0 30px rgba(56,189,248,.2);
-}
-
-.card i{
-  width:70px;
-  height:70px;
-  border-radius:20px;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  background:linear-gradient(to right,var(--primary),var(--secondary));
-  font-size:28px;
-  margin-bottom:25px;
-}
-
-.card h3{
-  margin-bottom:15px;
-  font-size:24px;
-}
-
-.card p{
-  line-height:1.9;
-  opacity:.85;
-}
-
-/* Timeline */
-
-.timeline{
-  position:relative;
-  margin-top:40px;
-}
-
-.timeline::before{
-  content:'';
-  position:absolute;
-  left:18px;
-  top:0;
-  width:3px;
-  height:100%;
-  background:linear-gradient(var(--primary),var(--secondary));
-}
-
-.timeline-item{
-  position:relative;
-  padding-left:60px;
-  margin-bottom:40px;
-}
-
-.timeline-item::before{
-  content:'';
-  position:absolute;
-  left:10px;
-  top:5px;
-  width:18px;
-  height:18px;
-  border-radius:50%;
-  background:var(--primary);
-}
-
-.timeline-item h4{
-  font-size:22px;
-  margin-bottom:10px;
-}
-
-/* Project */
-
-.project-image{
-  border-radius:25px;
-  overflow:hidden;
-  margin-bottom:20px;
-}
-
-.project-image img{
-  aspect-ratio:16/9;
-  object-fit:cover;
-}
-
-.project-buttons{
-  display:flex;
-  flex-wrap:wrap;
-  gap:12px;
-  margin-top:20px;
-}
-
-.project-buttons a{
-  padding:12px 20px;
-  border-radius:50px;
-  background:rgba(255,255,255,.08);
-  border:1px solid var(--border);
-  font-size:14px;
-}
-
-/* Gallery */
-
-.gallery{
-  columns:3 300px;
-  column-gap:20px;
-}
-
-.gallery img{
-  margin-bottom:20px;
-  border-radius:25px;
-  cursor:pointer;
-  transition:.4s;
-}
-
-.gallery img:hover{
-  transform:scale(1.03);
-}
-
-/* Lightbox */
-
-.lightbox{
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  background:rgba(0,0,0,.9);
-  display:none;
-  justify-content:center;
-  align-items:center;
-  z-index:9999;
-}
-
-.lightbox img{
-  max-width:90%;
-  max-height:90%;
-  border-radius:20px;
-}
-
-/* Testimonial */
-
-.testimonial-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-  gap:30px;
-}
-
-.testimonial-card{
-  background:var(--glass);
-  border:1px solid var(--border);
-  border-radius:30px;
-  padding:35px;
-}
-
-.testimonial-top{
-  display:flex;
-  align-items:center;
-  gap:15px;
-  margin-bottom:20px;
-}
-
-.testimonial-top img{
-  width:65px;
-  height:65px;
-  border-radius:50%;
-  object-fit:cover;
-}
-
-.stars{
-  color:gold;
-  margin-top:5px;
-}
-
-/* Contact */
-
-.contact-box{
-  display:flex;
-  justify-content:center;
-  gap:25px;
-  flex-wrap:wrap;
-}
-
-.contact-box a{
-  width:75px;
-  height:75px;
-  border-radius:50%;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  background:linear-gradient(to right,var(--primary),var(--secondary));
-  font-size:28px;
-  transition:.4s;
-}
-
-.contact-box a:hover{
-  transform:translateY(-8px);
-}
-
-/* Footer */
-
-footer{
-  padding:40px;
-  text-align:center;
-  opacity:.7;
-  border-top:1px solid var(--border);
-}
-
-/* Responsive */
-
-@media(max-width:950px){
-
-  .hero-wrapper{
-    grid-template-columns:1fr;
-  }
-
-  .hero-text{
-    text-align:center;
-  }
-
-  .hero-text h1{
-    font-size:52px;
-  }
-
-  nav ul{
-    display:none;
-  }
-
-}
-
-</style>
 </head>
 
 <body>
 
-<div class="blur one"></div>
-<div class="blur two"></div>
-
-<!-- Navbar -->
-
-<nav>
-
-<div class="logo">
-NASIHUL
-</div>
-
-<ul>
-<li><a href="#home">Beranda</a></li>
-<li><a href="#education">Pendidikan</a></li>
-<li><a href="#organization">Organisasi</a></li>
-<li><a href="#achievement">Prestasi</a></li>
-<li><a href="#projects">Projects</a></li>
-<li><a href="#gallery">Gallery</a></li>
-<li><a href="#testimonial">Testimoni</a></li>
-<li><a href="#contact">Kontak</a></li>
-</ul>
-
-</nav>
-
-<!-- Hero -->
-
-<section class="hero" id="home">
-
-<div class="hero-wrapper">
-
-<div class="hero-text">
-
-<h1>
-Ultra Premium <br>
-Portfolio Website
-</h1>
-
-<p>
-<b>Nama:</b> Nasikhul Ikhwan <br>
-<b>NIM:</b> 230142001 <br>
-<b>Instansi:</b> STKIP Al Hikmah Surabaya <br><br>
-
-“Menginspirasi melalui pendidikan,
-teknologi, dan kreativitas digital.”
-</p>
-
-<a href="#" class="btn">
-Download CV
-</a>
-
-</div>
-
-<div class="hero-image">
-
-<img
-src="https://drive.google.com/file/d/1i-uCMOTvdbnc0TjrYUM82mfPa07wlUd_/view?usp=drivesdk"
-alt="Profile">
-
-</div>
-
-</div>
-
-</section>
-
-<!-- Pendidikan -->
-
-<section id="education">
-
-<div class="section-title">
-
-<h2>Riwayat Pendidikan</h2>
-
-<p>
-Perjalanan pendidikan dan pengembangan kompetensi akademik.
-</p>
-
-</div>
-
-<div class="timeline">
-
-<div class="timeline-item">
-<h4>SD</h4>
-<p>MI YKUI Maskumambang Gresik</p>
-</div>
-
-<div class="timeline-item">
-<h4>SMP</h4>
-<p>MTs YKUI Maskumambang Gresik</p>
-</div>
-
-<div class="timeline-item">
-<h4>SMA</h4>
-<p>MA YKUI Maskumambang Gresik</p>
-</div>
-
-<div class="timeline-item">
-<h4>Kuliah</h4>
-<p>STKIP Al Hikmah Surabaya</p>
-</div>
-
-<div class="timeline-item">
-<h4>Sertifikat</h4>
-<p>Pelatihan Teknologi Pendidikan & Leadership</p>
-</div>
-
-</div>
-
-</section>
-
-<!-- Organisasi -->
-
-<section id="organization">
-
-<div class="section-title">
-
-<h2>Pengalaman Organisasi</h2>
-
-<p>
-Pengalaman organisasi dan kepemimpinan mahasiswa.
-</p>
-
-</div>
-
-<div class="grid">
-
-<div class="card">
-
-<i class="fa-solid fa-users"></i>
-
-<h3>Ketua Organisasi</h3>
-
-<p>
-<b>Tahun:</b> 2025 <br><br>
-
-Memimpin program kerja organisasi mahasiswa
-serta mengembangkan kegiatan pendidikan dan sosial.
-</p>
-
-</div>
-
-<div class="card">
-
-<i class="fa-solid fa-bullhorn"></i>
-
-<h3>Divisi Media Kreatif</h3>
-
-<p>
-<b>Tahun:</b> 2024 <br><br>
-
-Mengelola publikasi desain, media sosial,
-dan dokumentasi kegiatan organisasi.
-</p>
-
-</div>
-
-<div class="card">
-
-<i class="fa-solid fa-camera"></i>
-
-<h3>Dokumentasi Event</h3>
-
-<p>
-<b>Tahun:</b> 2023 <br><br>
-
-Mengelola dokumentasi visual kegiatan seminar,
-pelatihan, dan workshop mahasiswa.
-</p>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- Prestasi -->
-
-<section id="achievement">
-
-<div class="section-title">
-
-<h2>Prestasi</h2>
-
-<p>
-Prestasi akademik dan non-akademik tingkat nasional.
-</p>
-
-</div>
-
-<div class="grid">
-
-<div class="card">
-
-<i class="fa-solid fa-trophy"></i>
-
-<h3>Juara Lomba</h3>
-
-<p>
-Juara Kompetisi Nasional Bidang Pendidikan.
-</p>
-
-</div>
-
-<div class="card">
-
-<i class="fa-solid fa-award"></i>
-
-<h3>Sertifikat</h3>
-
-<p>
-Sertifikat Seminar Teknologi Pendidikan.
-</p>
-
-</div>
-
-<div class="card">
-
-<i class="fa-solid fa-medal"></i>
-
-<h3>Penghargaan</h3>
-
-<p>
-Mahasiswa Aktif dan Berprestasi.
-</p>
-
-</div>
-
-<div class="card">
-
-<i class="fa-solid fa-star"></i>
-
-<h3>Kompetisi Nasional</h3>
-
-<p>
-Finalis kompetisi inovasi pendidikan nasional.
-</p>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- Projects -->
-
-<section id="projects">
-
-<div class="section-title">
-
-<h2>Project Showcase</h2>
-
-<p>
-Media pembelajaran, game edukasi,
-dan teknologi interaktif modern.
-</p>
-
-</div>
-
-<div class="grid">
-
-<div class="card">
-
-<div class="project-image">
-
-<img
-loading="lazy"
-src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1200&auto=format&fit=crop">
-
-</div>
-
-<h3>RPP Digital</h3>
-
-<p>
-Rencana pembelajaran interaktif berbasis digital.
-</p>
-
-<div class="project-buttons">
-
-<a href="#">PDF</a>
-<a href="#">YouTube</a>
-<a href="#">Download</a>
-
-</div>
-
-</div>
-
-<div class="card">
-
-<div class="project-image">
-
-<img
-loading="lazy"
-src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1200&auto=format&fit=crop">
-
-</div>
-
-<h3>PPT Edukasi</h3>
-
-<p>
-Slide pembelajaran modern dan futuristik.
-</p>
-
-<div class="project-buttons">
-
-<a href="#">PPT</a>
-<a href="#">YouTube</a>
-<a href="#">Download</a>
-
-</div>
-
-</div>
-
-<div class="card">
-
-<div class="project-image">
-
-<img
-loading="lazy"
-src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1200&auto=format&fit=crop">
-
-</div>
-
-<h3>Game Edukasi</h3>
-
-<p>
-Mini game interaktif pembelajaran siswa.
-</p>
-
-<div class="project-buttons">
-
-<a href="#">Demo</a>
-<a href="#">YouTube</a>
-
-</div>
-
-</div>
-
-<div class="card">
-
-<div class="project-image">
-
-<img
-loading="lazy"
-src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?q=80&w=1200&auto=format&fit=crop">
-
-</div>
-
-<h3>Teka-Teki</h3>
-
-<p>
-Quiz dan puzzle pembelajaran interaktif.
-</p>
-
-<div class="project-buttons">
-
-<a href="#">Open</a>
-<a href="#">YouTube</a>
-
-</div>
-
-</div>
-
-<div class="card">
-
-<div class="project-image">
-
-<img
-loading="lazy"
-src="https://images.unsplash.com/photo-1455390582262-044cdead277a?q=80&w=1200&auto=format&fit=crop">
-
-</div>
-
-<h3>Roleplay Interaktif</h3>
-
-<p>
-Simulasi pembelajaran berbasis skenario.
-</p>
-
-<div class="project-buttons">
-
-<a href="#">Open</a>
-<a href="#">Video</a>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- Gallery -->
-
-<section id="gallery">
-
-<div class="section-title">
-
-<h2>Gallery</h2>
-
-<p>
-Dokumentasi visual kegiatan dan project.
-</p>
-
-</div>
-
-<div class="gallery">
-
-<img
-loading="lazy"
-src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1200&auto=format&fit=crop"
-onclick="openLightbox(this.src)">
-
-<img
-loading="lazy"
-src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1200&auto=format&fit=crop"
-onclick="openLightbox(this.src)">
-
-<img
-loading="lazy"
-src="https://images.unsplash.com/photo-1455390582262-044cdead277a?q=80&w=1200&auto=format&fit=crop"
-onclick="openLightbox(this.src)">
-
-<img
-loading="lazy"
-src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?q=80&w=1200&auto=format&fit=crop"
-onclick="openLightbox(this.src)">
-
-</div>
-
-</section>
-
-<!-- Lightbox -->
-
-<div class="lightbox" id="lightbox">
-
-<img id="lightbox-img">
-
-</div>
-
-<!-- Testimonial -->
-
-<section id="testimonial">
-
-<div class="section-title">
-
-<h2>Testimoni Pengunjung</h2>
-
-<p>
-Komentar dan pengalaman pengunjung website.
-</p>
-
-</div>
-
-<div class="testimonial-grid">
-
-<div class="testimonial-card">
-
-<div class="testimonial-top">
-
-<img
-src="https://randomuser.me/api/portraits/women/44.jpg">
-
-<div>
-
-<h4>Sarah</h4>
-
-<div class="stars">
-★★★★★
-</div>
-
-</div>
-
-</div>
-
-<p>
-Website ini sangat premium dan profesional.
-Tampilannya modern seperti aplikasi mobile futuristik.
-</p>
-
-</div>
-
-<div class="testimonial-card">
-
-<div class="testimonial-top">
-
-<img
-src="https://randomuser.me/api/portraits/men/32.jpg">
-
-<div>
-
-<h4>Andi</h4>
-
-<div class="stars">
-★★★★★
-</div>
-
-</div>
-
-</div>
-
-<p>
-Desain UI/UX sangat menarik,
-responsif, dan nyaman digunakan di semua perangkat.
-</p>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- Contact -->
-
-<section id="contact">
-
-<div class="section-title">
-
-<h2>Kontak</h2>
-
-<p>
-Mari terhubung dan berkolaborasi bersama.
-</p>
-
-</div>
-
-<div class="contact-box">
-
-<a href="#">
-<i class="fab fa-whatsapp"></i>
-</a>
-
-<a href="#">
-<i class="fab fa-linkedin"></i>
-</a>
-
-<a href="#">
-<i class="fas fa-envelope"></i>
-</a>
-
-<a href="#">
-<i class="fab fa-github"></i>
-</a>
-
-</div>
-
-</section>
-
-<!-- Footer -->
-
-<footer>
-
-© 2026 Ultra Premium Portfolio — Nasihul Ikhwan
-
-</footer>
-
-<!-- JS -->
-
-<script>
-
-function openLightbox(src){
-
-  document.getElementById('lightbox').style.display='flex';
-  document.getElementById('lightbox-img').src=src;
-
-}
-
-document.getElementById('lightbox').onclick=function(){
-  this.style.display='none';
-}
-
-</script>
+  <div id="root"></div>
 
 </body>
-  </html>
+</html>
+{
+  "name": "IKHWAN ACADEMY SPACE",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "firebase": "^10.12.2",
+    "framer-motion": "^11.2.10",
+    "lucide-react": "^0.408.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.24.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.1",
+    "autoprefixer": "^10.4.19",
+    "postcss": "^8.4.39",
+    "tailwindcss": "^3.4.4",
+    "vite": "^5.3.1"
+  }
+}
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+
+export default defineConfig({
+  plugins: [react()],
+})
+export default {
+  content: [
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
+  ],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+}
+export default {
+  content: [
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
+  ],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+}
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+
+import App from './App'
+import './index.css'
+
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+)
+import Home from './pages/Home'
+
+export default function App(){
+
+  return(
+    <>
+      <Home />
+    </>
+  )
+
+}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body{
+  background:#050816;
+  color:white;
+  font-family:Poppins,sans-serif;
+  overflow-x:hidden;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+::-webkit-scrollbar{
+  width:8px;
+}
+
+::-webkit-scrollbar-thumb{
+  background:#38bdf8;
+} 
+import Navbar from '../components/Navbar'
+import Hero from '../components/Hero'
+import Profile from '../components/Profile'
+import Projects from '../components/Projects'
+import Blog from '../components/Blog'
+import Contact from '../components/Contact'
+import Footer from '../components/Footer'
+
+export default function Home(){
+
+  return(
+    <>
+
+      <Navbar />
+      <Hero />
+      <Profile />
+      <Projects />
+      <Blog />
+      <Contact />
+      <Footer />
+
+    </>
+  )
+
+}
+        export default function Navbar(){
+
+  return(
+
+    <nav className="fixed top-0 left-0 w-full z-50 bg-white/5 backdrop-blur-xl border-b border-white/10">
+
+      <div className="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
+
+        <h1 className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-violet-500 text-transparent bg-clip-text">
+          IKHWAN ACADEMY SPACE
+        </h1>
+
+        <ul className="hidden md:flex gap-8">
+
+          <li><a href="#home">Home</a></li>
+          <li><a href="#profile">Profile</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#blog">Blog</a></li>
+          <li><a href="#contact">Contact</a></li>
+
+        </ul>
+
+      </div>
+
+    </nav>
+
+  )
+
+}
+        export default function Hero(){
+
+  return(
+
+    <section
+    id="home"
+    className="min-h-screen flex items-center px-6 pt-28">
+
+      <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
+
+        <div>
+
+          <h1 className="text-6xl lg:text-8xl font-extrabold leading-tight bg-gradient-to-r from-white to-cyan-400 text-transparent bg-clip-text">
+
+            IKHWAN ACADEMY SPACE
+
+          </h1>
+
+          <p className="mt-8 text-white/70 leading-9 text-lg">
+
+            Nama: Nasikhul Ikhwan <br />
+            NIM: 230142001 <br />
+            Instansi: STKIP Al Hikmah Surabaya
+
+          </p>
+
+          <button className="mt-10 px-8 py-4 rounded-full bg-gradient-to-r from-cyan-400 to-violet-500">
+            Download CV
+          </button>
+
+        </div>
+
+        <div className="bg-white/5 border border-white/10 rounded-[40px] p-5 backdrop-blur-xl">
+
+          <img
+          src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1200&auto=format&fit=crop"
+          className="rounded-[30px]" />
+
+        </div>
+
+      </div>
+
+    </section>
+
+  )
+
+}
+        export default function Profile(){
+
+  return(
+
+    <section
+    id="profile"
+    className="py-28 px-6">
+
+      <div className="max-w-7xl mx-auto">
+
+        <h2 className="text-5xl font-bold text-center mb-16 bg-gradient-to-r from-cyan-400 to-violet-500 text-transparent bg-clip-text">
+
+          Profile
+
+        </h2>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+
+          <div className="bg-white/5 border border-white/10 rounded-[30px] p-8">
+            Pendidikan
+          </div>
+
+          <div className="bg-white/5 border border-white/10 rounded-[30px] p-8">
+            Organisasi
+          </div>
+
+          <div className="bg-white/5 border border-white/10 rounded-[30px] p-8">
+            Prestasi
+          </div>
+
+          <div className="bg-white/5 border border-white/10 rounded-[30px] p-8">
+            Sertifikat
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  )
+
+}
+        export default function Projects(){
+
+  return(
+
+    <section
+    id="projects"
+    className="py-28 px-6">
+
+      <div className="max-w-7xl mx-auto">
+
+        <h2 className="text-5xl font-bold text-center mb-16 bg-gradient-to-r from-cyan-400 to-violet-500 text-transparent bg-clip-text">
+
+          Projects
+
+        </h2>
+
+        <div className="grid lg:grid-cols-3 gap-8">
+
+          <div className="bg-white/5 border border-white/10 rounded-[30px] overflow-hidden">
+
+            <img
+            src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1200&auto=format&fit=crop"
+            className="aspect-video object-cover"/>
+
+            <div className="p-8">
+
+              <h3 className="text-2xl font-bold mb-4">
+                RPP
+              </h3>
+
+              <button className="px-5 py-3 rounded-full bg-gradient-to-r from-cyan-400 to-violet-500">
+                Download
+              </button>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  )
+
+}
+        export default function Blog(){
+
+  return(
+
+    <section
+    id="blog"
+    className="py-28 px-6">
+
+      <div className="max-w-7xl mx-auto">
+
+        <h2 className="text-5xl font-bold text-center mb-16 bg-gradient-to-r from-cyan-400 to-violet-500 text-transparent bg-clip-text">
+
+          Blog
+
+        </h2>
+
+        <div className="grid lg:grid-cols-2 gap-8">
+
+          <div className="bg-white/5 border border-white/10 rounded-[30px] overflow-hidden">
+
+            <img
+            src="https://images.unsplash.com/photo-1455390582262-044cdead277a?q=80&w=1200&auto=format&fit=crop"
+            className="aspect-video object-cover"/>
+
+            <div className="p-8">
+
+              <h3 className="text-3xl font-bold mb-4">
+                Transformasi Pendidikan Digital
+              </h3>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  )
+
+}
+        export default function Contact(){
+
+  return(
+
+    <section
+    id="contact"
+    className="py-28 px-6">
+
+      <div className="max-w-5xl mx-auto text-center">
+
+        <h2 className="text-5xl font-bold mb-16 bg-gradient-to-r from-cyan-400 to-violet-500 text-transparent bg-clip-text">
+
+          Contact
+
+        </h2>
+
+        <div className="flex justify-center flex-wrap gap-6">
+
+          <a
+          href="#"
+          className="w-20 h-20 rounded-full bg-gradient-to-r from-cyan-400 to-violet-500 flex items-center justify-center">
+
+            WhatsApp
+
+          </a>
+
+          <a
+          href="#"
+          className="w-20 h-20 rounded-full bg-gradient-to-r from-cyan-400 to-violet-500 flex items-center justify-center">
+
+            LinkedIn
+
+          </a>
+
+          <a
+          href="#"
+          className="w-20 h-20 rounded-full bg-gradient-to-r from-cyan-400 to-violet-500 flex items-center justify-center">
+
+            Email
+
+          </a>
+
+          <a
+          href="#"
+          className="w-20 h-20 rounded-full bg-gradient-to-r from-cyan-400 to-violet-500 flex items-center justify-center">
+
+            GitHub
+
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  )
+
+}
+        export default function Footer(){
+
+  return(
+
+    <footer className="py-10 text-center border-t border-white/10 text-white/50">
+
+      © 2026 Ikhwan Academy Space | Premium Portofolio
+    </footer>
+
+  )
+
+}
