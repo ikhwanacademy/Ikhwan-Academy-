@@ -3,346 +3,549 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>IKHWAN ACADEMIC SPACE</title>
+  <title>Personal Portfolio Premium</title>
 
   <!-- Google Font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-  <!-- Tailwind CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Icons -->
+  <link rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
 
   <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      scroll-behavior:smooth;
+      font-family:'Poppins', sans-serif;
+    }
+
     body{
-      font-family: 'Montserrat', sans-serif;
       background:#0f172a;
       color:white;
+      overflow-x:hidden;
     }
 
-    .glass{
-      background: rgba(255,255,255,0.05);
-      backdrop-filter: blur(10px);
-      border:1px solid rgba(255,255,255,0.1);
+    body.light{
+      background:#f5f5f5;
+      color:#111;
     }
 
-    .gradient-text{
-      background: linear-gradient(to right,#38bdf8,#6366f1);
+    /* Navbar */
+
+    nav{
+      position:fixed;
+      width:100%;
+      top:0;
+      z-index:999;
+      padding:18px 8%;
+      backdrop-filter:blur(20px);
+      background:rgba(255,255,255,0.05);
+      border-bottom:1px solid rgba(255,255,255,0.1);
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+    }
+
+    nav h2{
+      color:#38bdf8;
+      font-weight:700;
+    }
+
+    nav ul{
+      display:flex;
+      gap:20px;
+      list-style:none;
+    }
+
+    nav ul li a{
+      color:white;
+      text-decoration:none;
+      transition:0.3s;
+    }
+
+    body.light nav ul li a{
+      color:#111;
+    }
+
+    nav ul li a:hover{
+      color:#38bdf8;
+    }
+
+    .toggle-theme{
+      cursor:pointer;
+      font-size:22px;
+      color:#38bdf8;
+    }
+
+    /* Hero */
+
+    .hero{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding:120px 10%;
+      background:
+      radial-gradient(circle at top left,#0ea5e9,#0f172a);
+    }
+
+    .hero-card{
+      padding:40px;
+      border-radius:30px;
+      background:rgba(255,255,255,0.08);
+      backdrop-filter:blur(20px);
+      border:1px solid rgba(255,255,255,0.15);
+      box-shadow:0 0 40px rgba(56,189,248,0.3);
+      animation:float 4s ease-in-out infinite;
+      max-width:800px;
+      width:100%;
+    }
+
+    @keyframes float{
+      0%,100%{transform:translateY(0);}
+      50%{transform:translateY(-10px);}
+    }
+
+    .hero img{
+      width:180px;
+      height:180px;
+      border-radius:50%;
+      object-fit:cover;
+      border:5px solid #38bdf8;
+      margin-bottom:20px;
+    }
+
+    .hero h1{
+      font-size:52px;
+      background:linear-gradient(to right,#38bdf8,#8b5cf6);
       -webkit-background-clip:text;
       -webkit-text-fill-color:transparent;
     }
 
-    .sidebar{
-      height:100vh;
-      position:fixed;
-      left:0;
-      top:0;
-      width:250px;
+    .hero p{
+      margin-top:10px;
+      opacity:0.8;
+      line-height:1.8;
     }
 
-    .content{
-      margin-left:260px;
+    .hero-buttons{
+      margin-top:30px;
+      display:flex;
+      justify-content:center;
+      gap:15px;
+      flex-wrap:wrap;
+    }
+
+    .hero-buttons a{
+      padding:12px 22px;
+      border-radius:50px;
+      text-decoration:none;
+      color:white;
+      background:linear-gradient(to right,#0ea5e9,#8b5cf6);
+      transition:0.3s;
+    }
+
+    .hero-buttons a:hover{
+      transform:scale(1.05);
+    }
+
+    /* Section */
+
+    section{
+      padding:100px 10%;
+    }
+
+    .section-title{
+      font-size:38px;
+      margin-bottom:40px;
+      text-align:center;
+      color:#38bdf8;
+    }
+
+    /* Timeline */
+
+    .timeline{
+      border-left:3px solid #38bdf8;
+      padding-left:30px;
+    }
+
+    .timeline-item{
+      margin-bottom:30px;
+      position:relative;
+    }
+
+    .timeline-item::before{
+      content:'';
+      position:absolute;
+      left:-40px;
+      top:5px;
+      width:15px;
+      height:15px;
+      border-radius:50%;
+      background:#38bdf8;
+    }
+
+    /* Cards */
+
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:25px;
+    }
+
+    .card{
+      background:rgba(255,255,255,0.08);
+      border:1px solid rgba(255,255,255,0.1);
+      backdrop-filter:blur(15px);
+      padding:25px;
+      border-radius:25px;
+      transition:0.3s;
+    }
+
+    .card:hover{
+      transform:translateY(-8px);
+      box-shadow:0 0 25px rgba(56,189,248,0.25);
+    }
+
+    .card h3{
+      margin-bottom:10px;
+      color:#38bdf8;
+    }
+
+    /* Gallery */
+
+    .gallery{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+      gap:20px;
+    }
+
+    .gallery img{
+      width:100%;
+      aspect-ratio:16/9;
+      object-fit:cover;
+      border-radius:20px;
+      transition:0.3s;
+      cursor:pointer;
+    }
+
+    .gallery img:hover{
+      transform:scale(1.03);
+    }
+
+    /* Testimonials */
+
+    .testimonial{
+      background:rgba(255,255,255,0.08);
+      padding:25px;
+      border-radius:20px;
+      margin-bottom:20px;
+    }
+
+    .stars{
+      color:gold;
+      margin-bottom:10px;
+    }
+
+    /* Contact */
+
+    .contact-links{
+      display:flex;
+      justify-content:center;
+      gap:20px;
+      flex-wrap:wrap;
+    }
+
+    .contact-links a{
+      width:60px;
+      height:60px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      border-radius:50%;
+      background:linear-gradient(to right,#0ea5e9,#8b5cf6);
+      color:white;
+      font-size:24px;
+      text-decoration:none;
+      transition:0.3s;
+    }
+
+    .contact-links a:hover{
+      transform:translateY(-5px);
+    }
+
+    footer{
+      text-align:center;
+      padding:30px;
+      opacity:0.7;
     }
 
     @media(max-width:768px){
-      .sidebar{
-        position:relative;
-        width:100%;
-        height:auto;
+
+      nav ul{
+        display:none;
       }
 
-      .content{
-        margin-left:0;
+      .hero h1{
+        font-size:38px;
       }
+
+      section{
+        padding:80px 7%;
+      }
+
     }
+
   </style>
 </head>
 
 <body>
 
-<!-- SIDEBAR -->
-<div class="sidebar glass p-6">
+  <!-- Navbar -->
 
-  <h1 class="text-2xl font-black gradient-text mb-8">
-    IKHWAN ACADEMIC SPACE
-  </h1>
+  <nav>
+    <h2>Portfolio</h2>
 
-  <div class="space-y-4">
+    <ul>
+      <li><a href="#beranda">Beranda</a></li>
+      <li><a href="#pendidikan">Pendidikan</a></li>
+      <li><a href="#organisasi">Organisasi</a></li>
+      <li><a href="#prestasi">Prestasi</a></li>
+      <li><a href="#project">Project</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#testimoni">Testimoni</a></li>
+      <li><a href="#kontak">Kontak</a></li>
+    </ul>
 
-    <a href="#" class="block hover:text-cyan-400 transition">
-      🏠 Beranda
-    </a>
-
-    <a href="#" class="block hover:text-cyan-400 transition">
-      👤 Profil
-    </a>
-
-    <a href="#" class="block hover:text-cyan-400 transition">
-      🏆 Prestasi
-    </a>
-
-    <a href="#" class="block hover:text-cyan-400 transition">
-      📚 RPP
-    </a>
-
-    <a href="#" class="block hover:text-cyan-400 transition">
-      📊 PPT
-    </a>
-
-    <a href="#" class="block hover:text-cyan-400 transition">
-      🎮 Game
-    </a>
-
-    <a href="#" class="block hover:text-cyan-400 transition">
-      🧩 Teka-teki
-    </a>
-
-    <a href="#" class="block hover:text-cyan-400 transition">
-      🤖 Media AI
-    </a>
-
-  </div>
-
-</div>
-
-<!-- MAIN CONTENT -->
-<div class="content">
-
-  <!-- HEADER -->
-  <header class="sticky top-0 z-50 glass p-5 flex justify-between items-center">
-
-    <div>
-      <h2 class="text-xl font-bold">
-        Dashboard Portfolio
-      </h2>
+    <div class="toggle-theme" onclick="toggleTheme()">
+      <i class="fa-solid fa-moon"></i>
     </div>
+  </nav>
 
-    <button class="bg-cyan-500 hover:bg-cyan-600 px-5 py-2 rounded-xl font-bold transition">
-      Login Admin
-    </button>
+  <!-- Hero -->
 
-  </header>
+  <section class="hero" id="beranda">
 
-  <!-- HERO -->
-  <section class="p-8">
+    <div class="hero-card">
 
-    <div class="glass rounded-3xl p-8">
+      <img src="profile.jpg" alt="Profile">
 
-      <h1 class="text-4xl md:text-5xl font-black gradient-text mb-4">
-        Nasikhul Ikhwan
-      </h1>
+      <h1>Nama Lengkap Anda</h1>
 
-      <p class="text-gray-300 mb-6">
-        Mahasiswa Pendidikan Bahasa Indonesia - STKIP Al Hikmah Surabaya
+      <p>
+        NIM: 123456789 <br>
+        Instansi: STKIP Al Hikmah Surabaya <br>
+        Motto: "Belajar, Berkarya, dan Menginspirasi."
       </p>
 
-      <div class="grid md:grid-cols-2 gap-5">
-
-        <div class="glass p-5 rounded-2xl">
-          <h3 class="font-bold text-cyan-400 mb-2">
-            Informasi Akademik
-          </h3>
-
-          <p>NIM : 230142001</p>
-          <p>Prodi : Pendidikan Bahasa Indonesia</p>
-          <p>Kampus : STKIP Al Hikmah Surabaya</p>
-
-        </div>
-
-        <div class="glass p-5 rounded-2xl">
-          <h3 class="font-bold text-cyan-400 mb-2">
-            Keahlian
-          </h3>
-
-          <p>✔ Desain Grafis</p>
-          <p>✔ Media Pembelajaran</p>
-          <p>✔ Editing Video</p>
-          <p>✔ Pengembangan Konten AI</p>
-
-        </div>
-
+      <div class="hero-buttons">
+        <a href="#">Download CV</a>
+        <a href="#">LinkedIn</a>
+        <a href="#">WhatsApp</a>
+        <a href="#">Email</a>
       </div>
 
     </div>
 
   </section>
 
-  <!-- ADMIN DASHBOARD -->
-  <section class="p-8">
+  <!-- Pendidikan -->
 
-    <h2 class="text-3xl font-black mb-6 gradient-text">
-      Admin Dashboard
-    </h2>
+  <section id="pendidikan">
 
-    <div class="grid md:grid-cols-2 gap-6">
+    <h2 class="section-title">Riwayat Pendidikan</h2>
 
-      <!-- FORM PROFIL -->
-      <div class="glass p-6 rounded-3xl">
+    <div class="timeline">
 
-        <h3 class="text-2xl font-bold mb-5">
-          Input Profil
-        </h3>
-
-        <form class="space-y-4">
-
-          <input type="text" placeholder="Nama Lengkap"
-            class="w-full p-4 rounded-xl bg-slate-800 border border-slate-700">
-
-          <input type="text" placeholder="Tempat, Tanggal Lahir"
-            class="w-full p-4 rounded-xl bg-slate-800 border border-slate-700">
-
-          <input type="text" placeholder="NIM"
-            class="w-full p-4 rounded-xl bg-slate-800 border border-slate-700">
-
-          <input type="text" placeholder="Program Studi"
-            class="w-full p-4 rounded-xl bg-slate-800 border border-slate-700">
-
-          <textarea placeholder="Pengalaman"
-            class="w-full p-4 rounded-xl bg-slate-800 border border-slate-700 h-32"></textarea>
-
-          <button class="bg-cyan-500 hover:bg-cyan-600 w-full py-4 rounded-xl font-bold">
-            Simpan Profil
-          </button>
-
-        </form>
-
+      <div class="timeline-item">
+        <h3>SD</h3>
+        <p>SD Negeri Contoh</p>
       </div>
 
-      <!-- FORM RPP -->
-      <div class="glass p-6 rounded-3xl">
+      <div class="timeline-item">
+        <h3>SMP</h3>
+        <p>SMP Negeri Contoh</p>
+      </div>
 
-        <h3 class="text-2xl font-bold mb-5">
-          Input RPP
-        </h3>
+      <div class="timeline-item">
+        <h3>SMA</h3>
+        <p>SMA Negeri Contoh</p>
+      </div>
 
-        <form class="space-y-4">
+      <div class="timeline-item">
+        <h3>Kuliah</h3>
+        <p>STKIP Al Hikmah Surabaya</p>
+      </div>
 
-          <select class="w-full p-4 rounded-xl bg-slate-800 border border-slate-700">
-
-            <option>Fase D</option>
-            <option>Fase E</option>
-            <option>Fase F</option>
-
-          </select>
-
-          <input type="text" placeholder="Judul Materi"
-            class="w-full p-4 rounded-xl bg-slate-800 border border-slate-700">
-
-          <input type="file"
-            class="w-full p-4 rounded-xl bg-slate-800 border border-slate-700">
-
-          <textarea placeholder="Deskripsi Materi"
-            class="w-full p-4 rounded-xl bg-slate-800 border border-slate-700 h-32"></textarea>
-
-          <button class="bg-indigo-500 hover:bg-indigo-600 w-full py-4 rounded-xl font-bold">
-            Upload RPP
-          </button>
-
-        </form>
-
+      <div class="timeline-item">
+        <h3>Sertifikat Tambahan</h3>
+        <p>Pelatihan Digital & Leadership</p>
       </div>
 
     </div>
 
   </section>
 
-  <!-- REPOSITORY -->
-  <section class="p-8">
+  <!-- Organisasi -->
 
-    <h2 class="text-3xl font-black mb-6 gradient-text">
-      Repository Akademik
-    </h2>
+  <section id="organisasi">
 
-    <div class="grid md:grid-cols-3 gap-5">
+    <h2 class="section-title">Pengalaman Organisasi</h2>
 
-      <!-- CARD -->
-      <div class="glass rounded-3xl p-5">
+    <div class="grid">
 
-        <h3 class="text-xl font-bold mb-3">
-          Fase D
-        </h3>
-
-        <ul class="space-y-2 text-gray-300">
-
-          <li>📘 Teks Deskripsi</li>
-          <li>📘 Prosedur</li>
-          <li>📘 Berita</li>
-          <li>📘 Cerpen</li>
-          <li>📘 Drama</li>
-
-        </ul>
-
+      <div class="card">
+        <h3>Ketua Organisasi</h3>
+        <p>Tahun: 2025</p>
+        <p>Memimpin kegiatan mahasiswa dan program kerja.</p>
       </div>
 
-      <!-- CARD -->
-      <div class="glass rounded-3xl p-5">
-
-        <h3 class="text-xl font-bold mb-3">
-          Fase E
-        </h3>
-
-        <ul class="space-y-2 text-gray-300">
-
-          <li>📗 Eksposisi</li>
-          <li>📗 Negosiasi</li>
-          <li>📗 Hikayat</li>
-          <li>📗 Cerpen</li>
-
-        </ul>
-
-      </div>
-
-      <!-- CARD -->
-      <div class="glass rounded-3xl p-5">
-
-        <h3 class="text-xl font-bold mb-3">
-          Fase F
-        </h3>
-
-        <ul class="space-y-2 text-gray-300">
-
-          <li>📕 Karya Ilmiah</li>
-          <li>📕 Proposal</li>
-          <li>📕 Biografi</li>
-          <li>📕 Film Pendek</li>
-
-        </ul>
-
+      <div class="card">
+        <h3>Divisi Media</h3>
+        <p>Tahun: 2024</p>
+        <p>Mengelola desain publikasi dan media sosial.</p>
       </div>
 
     </div>
 
   </section>
 
-  <!-- FOOTER -->
-  <footer class="glass mt-10 p-8 text-center">
+  <!-- Prestasi -->
 
-    <h3 class="text-2xl font-bold gradient-text mb-3">
-      IKHWAN ACADEMIC SPACE
-    </h3>
+  <section id="prestasi">
 
-    <p class="text-gray-300">
-      WhatsApp : 08xxxxxxxxxx
-    </p>
+    <h2 class="section-title">Prestasi</h2>
 
-    <p class="text-gray-300">
-      Email : nasikhul@example.com
-    </p>
+    <div class="grid">
 
-    <div class="flex justify-center gap-5 mt-4 text-2xl">
+      <div class="card">
+        <h3>Juara Lomba Nasional</h3>
+        <p>Kompetisi Pendidikan 2025</p>
+      </div>
 
-      <a href="#">📷</a>
-      <a href="#">🎵</a>
-      <a href="#">📘</a>
+      <div class="card">
+        <h3>Sertifikat Seminar</h3>
+        <p>Teknologi Pendidikan</p>
+      </div>
 
     </div>
 
-    <p class="mt-5 text-gray-500">
-      © 2026 IKHWAN ACADEMIC SPACE
-    </p>
+  </section>
 
+  <!-- Project -->
+
+  <section id="project">
+
+    <h2 class="section-title">Project Showcase</h2>
+
+    <div class="grid">
+
+      <div class="card">
+        <h3>RPP Interaktif</h3>
+        <p>Upload PDF dan video pembelajaran.</p>
+      </div>
+
+      <div class="card">
+        <h3>PPT Edukasi</h3>
+        <p>Presentasi pembelajaran modern.</p>
+      </div>
+
+      <div class="card">
+        <h3>Game Edukasi</h3>
+        <p>Mini game berbasis web.</p>
+      </div>
+
+      <div class="card">
+        <h3>Teka-Teki</h3>
+        <p>Quiz interaktif siswa.</p>
+      </div>
+
+      <div class="card">
+        <h3>Roleplay</h3>
+        <p>Skenario pembelajaran interaktif.</p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- Gallery -->
+
+  <section id="gallery">
+
+    <h2 class="section-title">Gallery</h2>
+
+    <div class="gallery">
+
+      <img src="gallery1.jpg">
+      <img src="gallery2.jpg">
+      <img src="gallery3.jpg">
+
+    </div>
+
+  </section>
+
+  <!-- Testimoni -->
+
+  <section id="testimoni">
+
+    <h2 class="section-title">Testimoni Pengunjung</h2>
+
+    <div class="testimonial">
+
+      <div class="stars">
+        ⭐⭐⭐⭐⭐
+      </div>
+
+      <p>
+        Website sangat modern, profesional, dan menarik.
+        Tampilan futuristiknya membuat pengalaman pengguna lebih nyaman.
+      </p>
+
+    </div>
+
+  </section>
+
+  <!-- Kontak -->
+
+  <section id="kontak">
+
+    <h2 class="section-title">Kontak</h2>
+
+    <div class="contact-links">
+
+      <a href="#"><i class="fab fa-whatsapp"></i></a>
+
+      <a href="#"><i class="fab fa-linkedin"></i></a>
+
+      <a href="#"><i class="fas fa-envelope"></i></a>
+
+      <a href="#"><i class="fab fa-github"></i></a>
+
+    </div>
+
+  </section>
+
+  <!-- Footer -->
+
+  <footer>
+    © 2026 Personal Portfolio Premium
   </footer>
 
-</div>
+  <!-- Script -->
+
+  <script>
+
+    function toggleTheme(){
+      document.body.classList.toggle("light");
+    }
+
+  </script>
 
 </body>
 </html>
