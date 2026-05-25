@@ -168,11 +168,54 @@ backdrop-filter:blur(15px);
 box-shadow:0 0 40px rgba(79,172,254,.15);
 }
 
-.profile-img{
-width:100%;
-border-radius:25px;
-object-fit:cover;
+/* PROFILE */
+
+.profile-card{
+  text-align:center;
 }
+
+.center-card{
+  text-align:center;
+}
+
+.center-card i{
+  margin-inline:auto;
+}
+
+.center-text{
+  text-align:center;
+  line-height:1.9;
+  opacity:.85;
+}
+
+/* FOTO PROFILE */
+
+.profile-image-wrapper{
+  width:220px;
+  height:220px;
+  margin:0 auto 25px;
+  position:relative;
+}
+
+.profile-photo{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  aspect-ratio:1/1;
+  border-radius:50%;
+  border:4px solid rgba(255,255,255,.12);
+  box-shadow:
+    0 0 25px rgba(56,189,248,.25),
+    0 0 60px rgba(139,92,246,.18);
+  transition:.4s;
+}
+
+.profile-photo:hover{
+  transform:scale(1.05);
+  box-shadow:
+    0 0 35px rgba(56,189,248,.4),
+    0 0 80px rgba(139,92,246,.25);
+  }
 
 /* SKILLS */
 
@@ -300,20 +343,9 @@ Explore Portfolio
 <a href="#" class="btn btn-outline">
 Download CV
 </a>
-
+  
 </div>
-
-</div>
-
-<div class="hero-card">
-
-<img src="profile.jpg" class="profile.jpg>
-<img src="https://unsplash.com/id/foto/y4WMaInt-Iw?utm_source=unsplash&utm_medium=referral&utm_content=creditShareLink>
-
-</div>
-
-</div>
-
+  
 </section>
 
 <section class="skills">
@@ -360,17 +392,6 @@ Mengajar akademik dan Al-Qur’an di lembaga formal maupun informal.
 </p>
 </div>
 
-</div>
-
-</section>
-
-<footer>
-© 2026 IKHWAN ACADEMIC SPACE — All Rights Reserved.
-</footer>
-
-</body>
-</html>
-
   <!-- PROFILE -->
 
 <section id="profile">
@@ -392,40 +413,67 @@ Mengajar akademik dan Al-Qur’an di lembaga formal maupun informal.
 
     <div class="card profile-card">
 
-      <img 
-        src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1200&auto=format&fit=crop"
-        alt="Foto Profil"
-        class="profile-photo"
-      >
+      <div class="profile-image-wrapper">
 
-      <h3>Nasikhul Ikhwan</h3>
+        <img 
+          src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1200&auto=format&fit=crop"
+          alt="Nasihul Ikhwan"
+          class="profile-photo"
+        >
 
-      <p class="profile-desc">
+      </div>
+
+      <h3>Nasihul Ikhwan</h3>
+
+      <p class="center-text">
         Mahasiswa Pendidikan Bahasa Indonesia,
-        educator, creative designer,
-        dan pengembang media pembelajaran digital.
+        educator, freelancer designer,
+        dan pengembang media pembelajaran interaktif.
       </p>
 
     </div>
 
     <!-- DATA PROFILE -->
 
-    <div class="card">
+    <div class="card center-card">
 
       <i class="fa-solid fa-user"></i>
 
       <h3>Profil</h3>
 
       <p>
-        Nama: Nasikhul Ikhwan <br>
+        Nama: Nasihul Ikhwan <br>
         NIM: 230142001 <br>
         Instansi: STKIP Al Hikmah Surabaya <br><br>
 
         Motto:
+        <br>
         “Belajar, Berkarya, dan Menginspirasi.”
       </p>
 
     </div>
+
+    <!-- PENDIDIKAN -->
+
+    <div class="card center-card">
+
+      <i class="fa-solid fa-graduation-cap"></i>
+
+      <h3>Pendidikan</h3>
+
+      <p>
+        Mahasiswa Pendidikan Bahasa Indonesia
+        di STKIP Al Hikmah Surabaya
+        dengan fokus pada teknologi pendidikan,
+        desain digital kreatif,
+        dan media pembelajaran modern.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
 
     <!-- PENDIDIKAN -->
 
