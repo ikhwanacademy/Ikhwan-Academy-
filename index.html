@@ -168,33 +168,39 @@ backdrop-filter:blur(15px);
 box-shadow:0 0 40px rgba(79,172,254,.15);
 }
 
-/* PROFILE */
+/* JARAK MY EXPERTISE KE PROFILE */
 
-.profile-card{
+#profile{
+  padding-top:140px;
+}
+
+/* PROFILE TITLE */
+
+.profile-title{
+  margin-bottom:70px;
+}
+
+/* PROFILE LAYOUT */
+
+.profile-layout{
+  display:grid;
+  grid-template-columns:350px 1fr;
+  gap:35px;
+  align-items:start;
+}
+
+/* IDENTITY CARD */
+
+.identity-card{
+  position:sticky;
+  top:120px;
   text-align:center;
 }
-
-.center-card{
-  text-align:center;
-}
-
-.center-card i{
-  margin-inline:auto;
-}
-
-.center-text{
-  text-align:center;
-  line-height:1.9;
-  opacity:.85;
-}
-
-/* FOTO PROFILE */
 
 .profile-image-wrapper{
   width:220px;
   height:220px;
   margin:0 auto 25px;
-  position:relative;
 }
 
 .profile-photo{
@@ -205,16 +211,127 @@ box-shadow:0 0 40px rgba(79,172,254,.15);
   border-radius:50%;
   border:4px solid rgba(255,255,255,.12);
   box-shadow:
-    0 0 25px rgba(56,189,248,.25),
-    0 0 60px rgba(139,92,246,.18);
-  transition:.4s;
+  0 0 30px rgba(56,189,248,.25),
+  0 0 60px rgba(139,92,246,.18);
 }
 
-.profile-photo:hover{
-  transform:scale(1.05);
-  box-shadow:
-    0 0 35px rgba(56,189,248,.4),
-    0 0 80px rgba(139,92,246,.25);
+/* IDENTITY INFO */
+
+.identity-info{
+  margin-top:25px;
+  text-align:left;
+}
+
+.info-item{
+  padding:18px 0;
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.info-item span{
+  display:block;
+  font-size:13px;
+  opacity:.65;
+  margin-bottom:8px;
+}
+
+.info-item p{
+  line-height:1.8;
+}
+
+/* PROFILE DETAIL */
+
+.profile-detail{
+  display:grid;
+  gap:28px;
+}
+
+/* INFO CARD */
+
+.info-card{
+  padding:35px;
+}
+
+/* HEADER */
+
+.info-header{
+  display:flex;
+  align-items:center;
+  gap:18px;
+  margin-bottom:30px;
+}
+
+.info-header i{
+  width:60px;
+  height:60px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  border-radius:18px;
+  background:linear-gradient(to right,var(--primary),var(--secondary));
+  font-size:22px;
+}
+
+.info-header h3{
+  font-size:28px;
+}
+
+/* TIMELINE */
+
+.timeline{
+  position:relative;
+  padding-left:30px;
+}
+
+.timeline::before{
+  content:'';
+  position:absolute;
+  left:8px;
+  top:0;
+  width:2px;
+  height:100%;
+  background:rgba(255,255,255,.1);
+}
+
+.timeline-item{
+  position:relative;
+  margin-bottom:30px;
+}
+
+.timeline-item::before{
+  content:'';
+  position:absolute;
+  left:-27px;
+  top:5px;
+  width:14px;
+  height:14px;
+  border-radius:50%;
+  background:linear-gradient(to right,var(--primary),var(--secondary));
+  box-shadow:0 0 15px rgba(56,189,248,.5);
+}
+
+.timeline-item h4{
+  font-size:18px;
+  margin-bottom:6px;
+}
+
+.timeline-item p{
+  opacity:.75;
+  line-height:1.8;
+}
+
+/* MOBILE */
+
+@media(max-width:950px){
+
+  .profile-layout{
+    grid-template-columns:1fr;
+  }
+
+  .identity-card{
+    position:relative;
+    top:0;
+  }
+
   }
 
 /* SKILLS */
@@ -489,67 +606,165 @@ Mengajar akademik dan Al-Qur’an di lembaga formal maupun informal.
   width:180px;
   height:180px;
   border-radius:50%;
-  object-fit:cover;
-  margin-bottom:20px;
-  border:4px solid rgba(255,255,255,.15);
-  box-shadow:0 0 35px rgba(79,172,254,.35);
-  transition:.4s;
-}
 
-.profile-photo:hover{
-  transform:scale(1.05);
-  box-shadow:0 0 50px rgba(139,92,246,.45);
-}
+      <!-- PROFILE -->
 
-.profile-desc{
-  color:#cbd5e1;
-  line-height:1.8;
-}
+<section id="profile">
 
-        <h3>Pendidikan</h3>
+  <div class="section-title profile-title">
 
-        <p>
-          MI YKUI Maskumambang Gresik<br>
-          MTs YKUI Maskumambang Gresik<br>
-          MA YKUI Maskumambang Gresik<br>
-          Ma'had Tahfidul Qur'an Utsman bin Affan, DIY<br>
-          STKIP Al Hikmah Surabaya
-        </p>
+    <h2>Profile</h2>
 
-      </div>
+    <p>
+      Informasi pribadi, pendidikan,
+      organisasi, dan prestasi profesional.
+    </p>
 
-      <div class="card">
+  </div>
 
-        <i class="fa-solid fa-users"></i>
+  <div class="profile-layout">
 
-        <h3>Organisasi</h3>
+    <!-- CARD IDENTITAS -->
 
-        <p>
-          Wakil Ketua Badan Eksekutif Mahasiswa - 2023/2024<br>
-          Ketua Divisi IT BEM 2022/2023<br>
-          Ketua Divisi HUMAS TPQ Yayasan Baitussyakur Surabaya 2024-Sekarang<br>
-          Wakil Ketua HMP Bahasa Indonesia STKIP 2023-2025
-        </p>
+    <div class="card identity-card">
+
+      <div class="profile-image-wrapper">
+
+        <img
+          src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1200&auto=format&fit=crop"
+          alt="Nasihul Ikhwan"
+          class="profile-photo"
+        >
 
       </div>
 
-      <div class="card">
+      <h3>Nasihul Ikhwan</h3>
 
-        <i class="fa-solid fa-trophy"></i>
+      <div class="identity-info">
 
-        <h3>Prestasi</h3>
+        <div class="info-item">
+          <span>NIM</span>
+          <p>230142001</p>
+        </div>
 
-        <p>
-          Penerima Dana Hibah Kemendikbud Ristek 2024 pada Program Kewirausahaan Mahasiswa (PPMW) Kategori Jasa<br>
-          Juara 3 Besar Desain Poster ECO GREEN CAMPUS STKIP - 2024<br>
-          Penulis Buku "TARUNA PURWARUPA" Rekam Jejak Perjalanan Meraih Asa 
-        </p>
+        <div class="info-item">
+          <span>Instansi</span>
+          <p>STKIP Al Hikmah Surabaya</p>
+        </div>
+
+        <div class="info-item">
+          <span>Motto Hidup</span>
+          <p>“Belajar, Berkarya, dan Menginspirasi.”</p>
+        </div>
 
       </div>
 
     </div>
 
-  </section>
+    <!-- DETAIL PROFILE -->
+
+    <div class="profile-detail">
+
+      <!-- PENDIDIKAN -->
+
+      <div class="card info-card">
+
+        <div class="info-header">
+          <i class="fa-solid fa-graduation-cap"></i>
+          <h3>Pendidikan</h3>
+        </div>
+
+        <div class="timeline">
+
+          <div class="timeline-item">
+            <h4>MI YKUI Maskumambang</h4>
+            <p>Gresik</p>
+          </div>
+
+          <div class="timeline-item">
+            <h4>MTs YKUI Maskumambang</h4>
+            <p>Gresik</p>
+          </div>
+
+          <div class="timeline-item">
+            <h4>MA YKUI Maskumambang</h4>
+            <p>Gresik</p>
+          </div>
+
+          <div class="timeline-item">
+            <h4>STKIP Al Hikmah Surabaya</h4>
+            <p>Pendidikan Bahasa Indonesia</p>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- ORGANISASI -->
+
+      <div class="card info-card">
+
+        <div class="info-header">
+          <i class="fa-solid fa-users"></i>
+          <h3>Organisasi</h3>
+        </div>
+
+        <div class="timeline">
+
+          <div class="timeline-item">
+            <h4>Wakil Ketua BEM</h4>
+            <p>2023–2024</p>
+          </div>
+
+          <div class="timeline-item">
+            <h4>Ketua Divisi IT BEM</h4>
+            <p>2022–2023</p>
+          </div>
+
+          <div class="timeline-item">
+            <h4>Ketua Divisi HUMAS TPQ</h4>
+            <p>Yayasan Baitusyakur</p>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- PRESTASI -->
+
+      <div class="card info-card">
+
+        <div class="info-header">
+          <i class="fa-solid fa-award"></i>
+          <h3>Prestasi</h3>
+        </div>
+
+        <div class="timeline">
+
+          <div class="timeline-item">
+            <h4>Penerima Dana Hibah P2MW</h4>
+            <p>Kemdikbud Ristek 2024</p>
+          </div>
+
+          <div class="timeline-item">
+            <h4>Juara 3 Desain Poster</h4>
+            <p>ECO GREEN CAMPUS STKIP</p>
+          </div>
+
+          <div class="timeline-item">
+            <h4>Penulis Buku</h4>
+            <p>TARUNA PURWARUPA</p>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
 
   <!-- PROJECTS -->
 
