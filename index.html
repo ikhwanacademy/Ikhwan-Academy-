@@ -1,1294 +1,291 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="id">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>IKHWAN ACADEMIC SPACE</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700;800&display=swap" rel="stylesheet">
-
-<style>
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Montserrat',sans-serif;
-scroll-behavior:smooth;
-}
-
-body{
-background:#050816;
-color:white;
-overflow-x:hidden;
-}
-
-/* BACKGROUND GLOW */
-
-body::before{
-content:'';
-position:fixed;
-width:500px;
-height:500px;
-background:radial-gradient(circle,#4facfe55,#00000000);
-top:-150px;
-left:-100px;
-z-index:-1;
-filter:blur(80px);
-}
-
-body::after{
-content:'';
-position:fixed;
-width:500px;
-height:500px;
-background:radial-gradient(circle,#8b5cf655,#00000000);
-bottom:-150px;
-right:-100px;
-z-index:-1;
-filter:blur(100px);
-}
-
-/* HEADER */
-
-header{
-position:sticky;
-top:0;
-z-index:999;
-background:rgba(8,12,30,.7);
-backdrop-filter:blur(15px);
-border-bottom:1px solid rgba(255,255,255,.1);
-padding:18px 25px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-}
-
-.logo{
-font-size:1.2rem;
-font-weight:800;
-background:linear-gradient(to right,#4facfe,#8b5cf6);
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
-}
-
-nav a{
-color:white;
-text-decoration:none;
-margin-left:18px;
-font-size:.9rem;
-opacity:.8;
-transition:.3s;
-}
-
-nav a:hover{
-opacity:1;
-color:#4facfe;
-}
-
-/* HERO */
-
-.hero{
-min-height:100vh;
-display:flex;
-align-items:center;
-justify-content:center;
-padding:60px 20px;
-}
-
-.hero-container{
-max-width:1200px;
-width:100%;
-display:grid;
-grid-template-columns:1fr;
-gap:40px;
-align-items:center;
-}
-
-.hero-text h1{
-font-size:4rem;
-line-height:1.1;
-font-weight:800;
-margin-bottom:25px;
-}
-
-.gradient-text{
-background:linear-gradient(to right,#ffffff,#4facfe,#8b5cf6);
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
-}
-
-.hero-text p{
-font-size:1.1rem;
-line-height:2;
-color:#cbd5e1;
-margin-bottom:30px;
-}
-
-/* BUTTON */
-
-.btn-group{
-display:flex;
-gap:15px;
-flex-wrap:wrap;
-}
-
-.btn{
-padding:14px 28px;
-border-radius:15px;
-text-decoration:none;
-font-weight:700;
-transition:.3s;
-}
-
-.btn-primary{
-background:linear-gradient(135deg,#4facfe,#8b5cf6);
-color:white;
-box-shadow:0 0 30px #4facfe66;
-}
-
-.btn-primary:hover{
-transform:translateY(-5px);
-}
-
-.btn-outline{
-border:1px solid rgba(255,255,255,.2);
-color:white;
-}
-
-/* CARD */
-
-.hero-card{
-background:rgba(255,255,255,.05);
-border:1px solid rgba(255,255,255,.1);
-border-radius:30px;
-padding:30px;
-backdrop-filter:blur(15px);
-box-shadow:0 0 40px rgba(79,172,254,.15);
-}
-
-/* JARAK MY EXPERTISE KE PROFILE */
-
-#profile{
-  padding-top:140px;
-}
-
-/* PROFILE TITLE */
-
-.profile-title{
-  margin-bottom:70px;
-}
-
-/* PROFILE LAYOUT */
-
-.profile-layout{
-  display:grid;
-  grid-template-columns:350px 1fr;
-  gap:35px;
-  align-items:start;
-}
-
-/* IDENTITY CARD */
-
-.identity-card{
-  position:sticky;
-  top:120px;
-  text-align:center;
-}
-
-.profile-image-wrapper{
-  width:220px;
-  height:220px;
-  margin:0 auto 25px;
-}
-
-.profile-photo{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  aspect-ratio:1/1;
-  border-radius:50%;
-  border:4px solid rgba(255,255,255,.12);
-  box-shadow:
-  0 0 30px rgba(56,189,248,.25),
-  0 0 60px rgba(139,92,246,.18);
-}
-
-/* IDENTITY INFO */
-
-.identity-info{
-  margin-top:25px;
-  text-align:left;
-}
-
-.info-item{
-  padding:18px 0;
-  border-bottom:1px solid rgba(255,255,255,.08);
-}
-
-.info-item span{
-  display:block;
-  font-size:13px;
-  opacity:.65;
-  margin-bottom:8px;
-}
-
-.info-item p{
-  line-height:1.8;
-}
-
-/* PROFILE DETAIL */
-
-.profile-detail{
-  display:grid;
-  gap:28px;
-}
-
-/* INFO CARD */
-
-.info-card{
-  padding:35px;
-}
-
-/* HEADER */
-
-.info-header{
-  display:flex;
-  align-items:center;
-  gap:18px;
-  margin-bottom:30px;
-}
-
-.info-header i{
-  width:60px;
-  height:60px;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  border-radius:18px;
-  background:linear-gradient(to right,var(--primary),var(--secondary));
-  font-size:22px;
-}
-
-.info-header h3{
-  font-size:28px;
-}
-
-/* TIMELINE */
-
-.timeline{
-  position:relative;
-  padding-left:30px;
-}
-
-.timeline::before{
-  content:'';
-  position:absolute;
-  left:8px;
-  top:0;
-  width:2px;
-  height:100%;
-  background:rgba(255,255,255,.1);
-}
-
-.timeline-item{
-  position:relative;
-  margin-bottom:30px;
-}
-
-.timeline-item::before{
-  content:'';
-  position:absolute;
-  left:-27px;
-  top:5px;
-  width:14px;
-  height:14px;
-  border-radius:50%;
-  background:linear-gradient(to right,var(--primary),var(--secondary));
-  box-shadow:0 0 15px rgba(56,189,248,.5);
-}
-
-.timeline-item h4{
-  font-size:18px;
-  margin-bottom:6px;
-}
-
-.timeline-item p{
-  opacity:.75;
-  line-height:1.8;
-}
-
-/* MOBILE */
-
-@media(max-width:950px){
-
-  .profile-layout{
-    grid-template-columns:1fr;
-  }
-
-  .identity-card{
-    position:relative;
-    top:0;
-  }
-
-  }
-
-/* SKILLS */
-
-.skills{
-padding:80px 20px;
-}
-
-.section-title{
-text-align:center;
-margin-bottom:50px;
-}
-
-.section-title h2{
-font-size:2.5rem;
-margin-bottom:15px;
-}
-
-.cards{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:25px;
-max-width:1200px;
-margin:auto;
-}
-
-.card{
-background:rgba(255,255,255,.04);
-border:1px solid rgba(255,255,255,.08);
-padding:30px;
-border-radius:25px;
-transition:.4s;
-backdrop-filter:blur(15px);
-}
-
-.card:hover{
-transform:translateY(-10px);
-border-color:#4facfe;
-box-shadow:0 0 40px rgba(79,172,254,.2);
-}
-
-.card h3{
-margin-bottom:15px;
-color:#4facfe;
-}
-
-/* FOOTER */
-
-footer{
-padding:40px 20px;
-text-align:center;
-border-top:1px solid rgba(255,255,255,.08);
-color:#94a3b8;
-}
-
-/* RESPONSIVE */
-
-@media(max-width:768px){
-
-.hero-text h1{
-font-size:2.8rem;
-}
-
-nav{
-display:none;
-}
-
-}
-
-@media(min-width:900px){
-
-.hero-container{
-grid-template-columns:1.2fr 1fr;
-}
-
-}
-
-</style>
-</head>
-
-<body>
-
-<header>
-
-<div class="logo">
-IKHWAN ACADEMIC SPACE
-</div>
-
-<nav>
-<a href="#">Beranda</a>
-<a href="#">Profil</a>
-<a href="#">Portfolio</a>
-<a href="#">Media</a>
-<a href="#">Kontak</a>
-</nav>
-
-</header>
-
-<section class="hero">
-
-<div class="hero-container">
-
-<div class="hero-text">
-
-<h1>
-Ultra Premium <br>
-<span class="gradient-text">
-Academic Portfolio
-</span>
-</h1>
-
-<p>
-Halo, saya Nasihul Ikhwan.
-Mahasiswa Pendidikan Bahasa Indonesia,
-educator, creative designer,
-dan pengembang media pembelajaran
-interaktif berbasis teknologi modern.
-</p>
-
-<div class="btn-group">
-
-<a href="#" class="btn btn-primary">
-Explore Portfolio
-</a>
-
-<a href="#" class="btn btn-outline">
-Download CV
-</a>
-  
-</div>
-  
-</section>
-
-<section class="skills">
-
-<div class="section-title">
-
-<h2 class="gradient-text">
-My Expertise
-</h2>
-
-<p>
-Bidang yang saya tekuni
-</p>
-
-</div>
-
-<div class="cards">
-
-<div class="card">
-<h3>Pendidikan</h3>
-<p>
-Pengembangan media pembelajaran modern berbasis teknologi.
-</p>
-</div>
-
-<div class="card">
-<h3>Desain Grafis</h3>
-<p>
-Pembuatan desain visual futuristik dan branding digital.
-</p>
-</div>
-
-<div class="card">
-<h3>Digital Creative</h3>
-<p>
-Konten edukasi kreatif untuk sosial media dan pembelajaran.
-</p>
-</div>
-
-<div class="card">
-<h3>Pengajaran</h3>
-<p>
-Mengajar akademik dan Al-Qur’an di lembaga formal maupun informal.
-</p>
-</div>
-  
-      <!-- PROFILE -->
-
-<section id="profile">
-
-  <div class="section-title profile-title">
-
-    <h2>Profile</h2>
-
-    <p>
-      Informasi pribadi, pendidikan,
-      organisasi, dan prestasi profesional.
-    </p>
-
-  </div>
-
-  <div class="profile-layout">
-
-    <!-- CARD IDENTITAS -->
-
-    <div class="card identity-card">
-
-      <div class="profile-image-wrapper">
-
-        <img
-          src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1200&auto=format&fit=crop"
-          alt="Nasihul Ikhwan"
-          class="profile-photo"
-        >
-
-      </div>
-
-      <h3>Nasihul Ikhwan</h3>
-
-      <div class="identity-info">
-
-        <div class="info-item">
-          <span>NIM</span>
-          <p>230142001</p>
-        </div>
-
-        <div class="info-item">
-          <span>Instansi</span>
-          <p>STKIP Al Hikmah Surabaya</p>
-        </div>
-
-        <div class="info-item">
-          <span>Motto Hidup</span>
-          <p>“Belajar, Berkarya, dan Menginspirasi.”</p>
-        </div>
-
-      </div>
-
-    </div>
-
-    <!-- DETAIL PROFILE -->
-
-    <div class="profile-detail">
-
-      <!-- PENDIDIKAN -->
-
-      <div class="card info-card">
-
-        <div class="info-header">
-          <i class="fa-solid fa-graduation-cap"></i>
-          <h3>Pendidikan</h3>
-        </div>
-
-        <div class="timeline">
-
-          <div class="timeline-item">
-            <h4>MI YKUI Maskumambang</h4>
-            <p>Gresik</p>
-          </div>
-
-          <div class="timeline-item">
-            <h4>MTs YKUI Maskumambang</h4>
-            <p>Gresik</p>
-          </div>
-
-          <div class="timeline-item">
-            <h4>MA YKUI Maskumambang</h4>
-            <p>Gresik</p>
-          </div>
-
-          <div class="timeline-item">
-            <h4>STKIP Al Hikmah Surabaya</h4>
-            <p>Pendidikan Bahasa Indonesia</p>
-          </div>
-
-        </div>
-
-      </div>
-
-      <!-- ORGANISASI -->
-
-      <div class="card info-card">
-
-        <div class="info-header">
-          <i class="fa-solid fa-users"></i>
-          <h3>Organisasi</h3>
-        </div>
-
-        <div class="timeline">
-
-          <div class="timeline-item">
-            <h4>Wakil Ketua BEM</h4>
-            <p>2023–2024</p>
-          </div>
-
-          <div class="timeline-item">
-            <h4>Ketua Divisi IT BEM</h4>
-            <p>2022–2023</p>
-          </div>
-
-          <div class="timeline-item">
-            <h4>Ketua Divisi HUMAS TPQ</h4>
-            <p>Yayasan Baitusyakur</p>
-          </div>
-
-        </div>
-
-      </div>
-
-      <!-- PRESTASI -->
-
-      <div class="card info-card">
-
-        <div class="info-header">
-          <i class="fa-solid fa-award"></i>
-          <h3>Prestasi</h3>
-        </div>
-
-        <div class="timeline">
-
-          <div class="timeline-item">
-            <h4>Penerima Dana Hibah P2MW</h4>
-            <p>Kemdikbud Ristek 2024</p>
-          </div>
-
-          <div class="timeline-item">
-            <h4>Juara 3 Desain Poster</h4>
-            <p>ECO GREEN CAMPUS STKIP</p>
-          </div>
-
-          <div class="timeline-item">
-            <h4>Penulis Buku</h4>
-            <p>TARUNA PURWARUPA</p>
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-  <!-- PROJECTS -->
-
-<section id="projects">
-
-  <div class="section-title">
-
-    <h2>Project Showcase</h2>
-
-    <p>
-      Kumpulan RPP,
-      PPT, game interaktif,
-      teka-teki, dan roleplay modern.
-    </p>
-
-  </div>
-
-  <div class="grid">
-
-    <!-- RPP -->
-
-    <div class="card">
-
-      <div class="project-image">
-
-        <img
-        src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1200&auto=format&fit=crop"
-        alt="RPP Digital">
-
-      </div>
-
-      <span class="project-badge">
-        RPP
-      </span>
-
-      <h3>RPP Digital</h3>
-
-      <p>
-        Rencana Pelaksanaan Pembelajaran
-        berbasis digital interaktif modern
-        dengan desain futuristik.
-      </p>
-
-      <div class="project-links">
-
-        <a href="#">
-          <i class="fa-solid fa-file-pdf"></i>
-          PDF
-        </a>
-
-        <a href="#">
-          <i class="fa-brands fa-youtube"></i>
-          YouTube
-        </a>
-
-        <a href="#">
-          <i class="fa-solid fa-download"></i>
-          Download
-        </a>
-
-      </div>
-
-    </div>
-
-    <!-- PPT -->
-
-    <div class="card">
-
-      <div class="project-image">
-
-        <img
-        src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1200&auto=format&fit=crop"
-        alt="PPT Edukasi">
-
-      </div>
-
-      <span class="project-badge">
-        PPT
-      </span>
-
-      <h3>PPT Edukasi</h3>
-
-      <p>
-        Slide presentasi edukasi modern
-        dengan animasi premium dan visual
-        pembelajaran interaktif.
-      </p>
-
-      <div class="project-links">
-
-        <a href="#">
-          <i class="fa-solid fa-file-powerpoint"></i>
-          PPT
-        </a>
-
-        <a href="#">
-          <i class="fa-brands fa-youtube"></i>
-          Video
-        </a>
-
-        <a href="#">
-          <i class="fa-solid fa-download"></i>
-          Download
-        </a>
-
-      </div>
-
-    </div>
-
-    <!-- Game Edukasi -->
-
-    <div class="card">
-
-      <div class="project-image">
-
-        <img
-        src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1200&auto=format&fit=crop"
-        alt="Game Edukasi">
-
-      </div>
-
-      <span class="project-badge">
-        Game
-      </span>
-
-      <h3>Game Edukasi</h3>
-
-      <p>
-        Mini game pembelajaran berbasis web
-        modern untuk meningkatkan interaksi
-        dan kreativitas siswa.
-      </p>
-
-      <div class="project-links">
-
-        <a href="#">
-          <i class="fa-solid fa-gamepad"></i>
-          Demo
-        </a>
-
-        <a href="#">
-          <i class="fa-brands fa-github"></i>
-          GitHub
-        </a>
-
-        <a href="#">
-          <i class="fa-brands fa-youtube"></i>
-          Gameplay
-        </a>
-
-      </div>
-
-    </div>
-
-    <!-- Teka-Teki -->
-
-    <div class="card">
-
-      <div class="project-image">
-
-        <img
-        src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?q=80&w=1200&auto=format&fit=crop"
-        alt="Teka-Teki">
-
-      </div>
-
-      <span class="project-badge">
-        Quiz
-      </span>
-
-      <h3>Teka-Teki Edukatif</h3>
-
-      <p>
-        Sistem quiz dan teka-teki interaktif
-        berbasis digital untuk pembelajaran
-        aktif dan menyenangkan.
-      </p>
-
-      <div class="project-links">
-
-        <a href="#">
-          <i class="fa-solid fa-puzzle-piece"></i>
-          Open
-        </a>
-
-        <a href="#">
-          <i class="fa-brands fa-youtube"></i>
-          Demo
-        </a>
-
-        <a href="#">
-          <i class="fa-solid fa-download"></i>
-          Download
-        </a>
-
-      </div>
-
-    </div>
-
-    <!-- Roleplay -->
-
-    <div class="card">
-
-      <div class="project-image">
-
-        <img
-        src="https://images.unsplash.com/photo-1455390582262-044cdead277a?q=80&w=1200&auto=format&fit=crop"
-        alt="Roleplay Interaktif">
-
-      </div>
-
-      <span class="project-badge">
-        Roleplay
-      </span>
-
-      <h3>Roleplay Interaktif</h3>
-
-      <p>
-        Simulasi pembelajaran berbasis
-        skenario roleplay interaktif
-        untuk meningkatkan komunikasi siswa.
-      </p>
-
-      <div class="project-links">
-
-        <a href="#">
-          <i class="fa-solid fa-masks-theater"></i>
-          Open
-        </a>
-
-        <a href="#">
-          <i class="fa-brands fa-youtube"></i>
-          Video
-        </a>
-
-        <a href="#">
-          <i class="fa-solid fa-download"></i>
-          Download
-        </a>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-<style>
-
-.project-badge{
-  display:inline-block;
-  padding:8px 18px;
-  margin-bottom:20px;
-  border-radius:50px;
-  background:linear-gradient(to right,#38bdf8,#8b5cf6);
-  font-size:13px;
-  font-weight:600;
-}
-
-.project-links a i{
-  margin-right:8px;
-}
-
-</style>
-  <!-- BLOG -->
-
-  <section id="blog">
-
-    <div class="section-title">
-
-      <h2>Blog</h2>
-
-      <p>
-        Artikel, teknologi pendidikan,
-        desain UI/UX, dan inovasi digital.
-      </p>
-
-    </div>
-
-    <div class="grid">
-
-      <div class="card">
-
-        <div class="blog-image">
-          <img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?q=80&w=1200&auto=format&fit=crop">
-        </div>
-
-        <div class="blog-meta">
-
-          <span>
-            <i class="fa-solid fa-calendar"></i>
-            24 Mei 2026
-          </span>
-
-          <span>
-            <i class="fa-solid fa-user"></i>
-            NASIKHUL IKHWAN
-          </span>
-
-        </div>
-
-        <h3>
-          Transformasi Pendidikan Digital
-        </h3>
-
-        <p>
-          Teknologi modern membawa perubahan
-          besar dalam pembelajaran masa depan.
-        </p>
-
-      </div>
-
-      <div class="card">
-
-        <div class="blog-image">
-          <img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?q=80&w=1200&auto=format&fit=crop">
-        </div>
-
-        <div class="blog-meta">
-
-          <span>
-            <i class="fa-solid fa-calendar"></i>
-            20 Mei 2026
-          </span>
-
-          <span>
-            <i class="fa-solid fa-user"></i>
-            NASIKHUL IKHWAN
-          </span>
-
-        </div>
-
-        <h3>
-          UI Futuristik Modern
-        </h3>
-
-        <p>
-          Inspirasi desain premium ala startup modern.
-        </p>
-
-      </div>
-
-    </div>
-
-  </section>
-
-  <!-- TESTIMONIAL -->
-
-  <section>
-
-    <div class="section-title">
-
-      <h2>Testimonials</h2>
-
-    </div>
-
-    <div class="testimonial">
-
-      <div class="stars">
-        ★★★★★
-      </div>
-
-      <p>
-        “Website portfolio ini memiliki tampilan
-        yang sangat premium, modern, dan futuristik.
-        Layout mobile-app style membuat pengalaman
-        pengguna terasa seperti aplikasi Android/iOS modern.”
-      </p>
-
-    </div>
-
-  </section>
-
-  <!-- CONTACT -->
-
-  <section id="contact">
-
-  <div class="section-title">
-
-    <h2>Contact</h2>
-
-    <p>
-      Mari terhubung dan berkolaborasi bersama
-      IKHWAN ACADEMY SPACE.
-    </p>
-
-  </div>
-
-  <div class="contact-container">
-
-    <!-- WhatsApp -->
-
-    <a 
-    href="https://wa.me/qr/JUDLU6AVKD7IL1"
-    target="_blank"
-    class="contact-card">
-
-      <div class="contact-icon whatsapp">
-        <i class="fab fa-whatsapp"></i>
-      </div>
-
-      <div class="contact-info">
-
-        <h3>WhatsApp</h3>
-
-        <p>
-          Chat langsung melalui WhatsApp
-        </p>
-
-      </div>
-
-    </a>
-
-    <!-- Email -->
-
-    <a 
-    href="mailto:ikhwannasihkhul@gmail.com"
-    class="contact-card">
-
-      <div class="contact-icon email">
-        <i class="fas fa-envelope"></i>
-      </div>
-
-      <div class="contact-info">
-
-        <h3>Email</h3>
-
-        <p>
-          ikhwannasihkhul@gmail.com
-        </p>
-
-      </div>
-
-    </a>
-
-    <!-- LinkedIn -->
-
-    <a 
-    href="https://www.linkedin.com/in/nasikhul-ikhwan-387565299?utm_source=share_via&utm_content=profile&utm_medium=member_android"
-    target="_blank"
-    class="contact-card">
-
-      <div class="contact-icon linkedin">
-        <i class="fab fa-linkedin"></i>
-      </div>
-
-      <div class="contact-info">
-
-        <h3>LinkedIn</h3>
-
-        <p>
-          Professional Profile
-        </p>
-
-      </div>
-
-    </a>
-
-    <!-- Facebook -->
-
-    <a 
-    href="https://www.facebook.com/profile.php?id=100083183403813"
-    target="_blank"
-    class="contact-card">
-
-      <div class="contact-icon facebook">
-        <i class="fab fa-facebook-f"></i>
-      </div>
-
-      <div class="contact-info">
-
-        <h3>Facebook</h3>
-
-        <p>
-          Official Facebook Account
-        </p>
-
-      </div>
-
-    </a>
-
-    <!-- Instagram -->
-
-    <a 
-    href="https://www.instagram.com/ikhwanasihul?igsh=MWQ4bmV4MnpsOWQxbw=="
-    target="_blank"
-    class="contact-card">
-
-      <div class="contact-icon instagram">
-        <i class="fab fa-instagram"></i>
-      </div>
-
-      <div class="contact-info">
-
-        <h3>Instagram</h3>
-
-        <p>
-          @ikhwanasihul
-        </p>
-
-      </div>
-
-    </a>
-
-  </div>
-
-  </section>
+ <head><script src="/_sdk/telemetry_sdk.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rekap Harian Santri</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet">
   <style>
-
-.contact-container{
-  max-width:1200px;
-  margin:auto;
-  display:grid;
-  grid-template-columns:
-  repeat(auto-fit,minmax(280px,1fr));
-  gap:30px;
-}
-
-.contact-card{
-  display:flex;
-  align-items:center;
-  gap:20px;
-  padding:28px;
-  border-radius:30px;
-  background:rgba(255,255,255,.05);
-  border:1px solid rgba(255,255,255,.08);
-  backdrop-filter:blur(18px);
-  transition:.4s;
-  position:relative;
-  overflow:hidden;
-}
-
-.contact-card::before{
-  content:'';
-  position:absolute;
-  width:120px;
-  height:120px;
-  background:rgba(255,255,255,.05);
-  border-radius:50%;
-  top:-40px;
-  right:-40px;
-}
-
-.contact-card:hover{
-  transform:translateY(-10px);
-  box-shadow:0 0 35px rgba(56,189,248,.2);
-}
-
-.contact-icon{
-  min-width:75px;
-  height:75px;
-  border-radius:22px;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  font-size:30px;
-  color:white;
-}
-
-.whatsapp{
-  background:linear-gradient(to right,#25D366,#1ebe5d);
-}
-
-.email{
-  background:linear-gradient(to right,#ff6b6b,#ff3b3b);
-}
-
-.linkedin{
-  background:linear-gradient(to right,#0077b5,#005f91);
-}
-
-.facebook{
-  background:linear-gradient(to right,#1877f2,#145bd1);
-}
-
-.instagram{
-  background:linear-gradient(to right,#f58529,#dd2a7b,#8134af);
-}
-
-.contact-info h3{
-  font-size:24px;
-  margin-bottom:8px;
-}
-
-.contact-info p{
-  opacity:.75;
-  line-height:1.8;
-}
-
-@media(max-width:768px){
-
-  .contact-card{
-    padding:24px;
-  }
-
-  .contact-info h3{
-    font-size:20px;
-  }
-
-}
-
+    body { font-family: 'DM Sans', sans-serif; }
+    .tab-active { border-bottom: 3px solid #16a34a; color: #14532d; font-weight: 700; }
+    .tab-inactive { color: #6b7280; }
   </style>
-
-  <!-- FOOTER -->
-
-  <footer>
-
-    Indonesia 
-Hak cipta © 2026 Ikhwan Academy Space.
-Website Portofolio ini dibangun untuk memberikan dampak baik bagi sobat pendidikan dalam menunjang kinerja pada saat mengajar.
-  </footer>
-
-  <!-- SCRIPT -->
-
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js" type="text/javascript"></script>
+  <script src="/_sdk/resizing_sdk.js" type="text/javascript"></script>
+ </head>
+ <body data-template-id="__page-root" class="min-h-screen w-full">
+  <header class="p-6 border-b">
+   <div class="max-w-6xl mx-auto">
+    <h1 data-template-id="page-title" class="canva-text font-bold"></h1>
+    <p data-template-id="page-subtitle" class="canva-text mt-1"></p>
+   </div>
+  </header>
+  <main class="max-w-6xl mx-auto p-6">
+   <nav class="flex gap-6 border-b mb-6"><button type="button" class="tab-btn tab-active pb-2 px-1" data-tab="kehadiran">Kehadiran</button> <button type="button" class="tab-btn tab-inactive pb-2 px-1" data-tab="hafalan">Hafalan</button> <button type="button" class="tab-btn tab-inactive pb-2 px-1" data-tab="penilaian">Penilaian</button>
+   </nav><!-- KEHADIRAN -->
+   <section id="tab-kehadiran" class="space-y-6">
+    <form id="form-kehadiran" class="p-5 rounded-xl border space-y-4" data-template-id="form-kehadiran">
+     <h2 data-template-id="form-kehadiran-title" class="canva-text font-bold mb-2"></h2>
+     <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+      <div>
+       <label class="block text-sm font-medium mb-1" for="kh-nama">Nama</label><input id="kh-nama" type="text" required class="w-full border rounded-lg px-3 py-2 text-sm">
+      </div>
+      <div>
+       <label class="block text-sm font-medium mb-1" for="kh-tanggal">Tanggal</label><input id="kh-tanggal" type="date" required class="w-full border rounded-lg px-3 py-2 text-sm">
+      </div>
+      <div>
+       <label class="block text-sm font-medium mb-1" for="kh-status">Status</label> <select id="kh-status" class="w-full border rounded-lg px-3 py-2 text-sm"> <option value="Hadir">Hadir</option><option value="Sakit">Sakit</option><option value="Izin">Izin</option><option value="Alfa">Alfa</option> </select>
+      </div>
+      <div>
+       <label class="block text-sm font-medium mb-1 flex items-center gap-2"><input type="checkbox" id="kh-ekstra"> Ekstra</label>
+      </div>
+     </div><button type="submit" data-template-id="btn-simpan-kh" class="canva-button px-5 py-2 rounded-lg text-sm font-medium"></button> <span id="kh-loading" class="hidden ml-2 text-gray-500 text-sm">Menyimpan...</span>
+     <div id="kh-error" class="hidden text-red-600 text-sm mt-1"></div>
+    </form>
+    <div class="overflow-x-auto">
+     <table id="tbl-kehadiran" class="w-full text-sm hidden">
+      <thead class="bg-gray-100">
+       <tr>
+        <th class="px-3 py-2 text-left">Nama</th>
+        <th class="px-3 py-2">Tanggal</th>
+        <th class="px-3 py-2">Status</th>
+        <th class="px-3 py-2">Ekstra</th>
+        <th class="px-3 py-2"></th>
+       </tr>
+      </thead>
+      <tbody id="tbody-kehadiran"></tbody>
+     </table>
+    </div>
+    <p id="empty-kehadiran" data-template-id="empty-kehadiran" class="canva-text text-center py-6"></p>
+   </section><!-- HAFALAN -->
+   <section id="tab-hafalan" class="space-y-6 hidden">
+    <form id="form-hafalan" class="p-5 rounded-xl border space-y-4" data-template-id="form-hafalan">
+     <h2 data-template-id="form-hafalan-title" class="canva-text font-bold mb-2"></h2>
+     <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div>
+       <label class="block text-sm font-medium mb-1" for="hf-nama">Nama</label><input id="hf-nama" type="text" required class="w-full border rounded-lg px-3 py-2 text-sm">
+      </div>
+      <div>
+       <label class="block text-sm font-medium mb-1" for="hf-surat">Surat</label> <select id="hf-surat" class="w-full border rounded-lg px-3 py-2 text-sm"> <option>Al Muthaffifin</option><option>Al Infithar</option><option>At Takwiir</option><option>'Abasa</option><option>An Nazi'at</option><option>An Naba'</option> </select>
+      </div>
+      <div>
+       <label class="block text-sm font-medium mb-1" for="hf-nilai">Nilai</label><input id="hf-nilai" type="number" min="0" max="100" class="w-full border rounded-lg px-3 py-2 text-sm">
+      </div>
+     </div><button type="submit" data-template-id="btn-simpan-hf" class="canva-button px-5 py-2 rounded-lg text-sm font-medium"></button> <span id="hf-loading" class="hidden ml-2 text-gray-500 text-sm">Menyimpan...</span>
+     <div id="hf-error" class="hidden text-red-600 text-sm mt-1"></div>
+    </form>
+    <div class="overflow-x-auto">
+     <table id="tbl-hafalan" class="w-full text-sm hidden">
+      <thead class="bg-gray-100">
+       <tr>
+        <th class="px-3 py-2 text-left">Nama</th>
+        <th class="px-3 py-2">Surat</th>
+        <th class="px-3 py-2">Nilai</th>
+        <th class="px-3 py-2"></th>
+       </tr>
+      </thead>
+      <tbody id="tbody-hafalan"></tbody>
+     </table>
+    </div>
+    <p id="empty-hafalan" data-template-id="empty-hafalan" class="canva-text text-center py-6"></p>
+   </section><!-- PENILAIAN -->
+   <section id="tab-penilaian" class="space-y-6 hidden">
+    <form id="form-penilaian" class="p-5 rounded-xl border space-y-4" data-template-id="form-penilaian">
+     <h2 data-template-id="form-penilaian-title" class="canva-text font-bold mb-2"></h2>
+     <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div>
+       <label class="block text-sm font-medium mb-1" for="pn-nama">Nama</label><input id="pn-nama" type="text" required class="w-full border rounded-lg px-3 py-2 text-sm">
+      </div>
+      <div>
+       <label class="block text-sm font-medium mb-1" for="pn-kedisiplinan">Kedisiplinan</label><select id="pn-kedisiplinan" class="w-full border rounded-lg px-3 py-2 text-sm"><option>Baik</option><option>Cukup</option><option>Kurang</option></select>
+      </div>
+      <div>
+       <label class="block text-sm font-medium mb-1" for="pn-aktifitas">Aktifitas</label><select id="pn-aktifitas" class="w-full border rounded-lg px-3 py-2 text-sm"><option>Baik</option><option>Cukup</option><option>Kurang</option></select>
+      </div>
+      <div>
+       <label class="block text-sm font-medium mb-1" for="pn-inisiatif">Inisiatif</label><select id="pn-inisiatif" class="w-full border rounded-lg px-3 py-2 text-sm"><option>Baik</option><option>Cukup</option><option>Kurang</option></select>
+      </div>
+      <div>
+       <label class="block text-sm font-medium mb-1" for="pn-ketelitian">Ketelitian</label><select id="pn-ketelitian" class="w-full border rounded-lg px-3 py-2 text-sm"><option>Baik</option><option>Cukup</option><option>Kurang</option></select>
+      </div>
+      <div>
+       <label class="block text-sm font-medium mb-1" for="pn-kepatuhan">Kepatuhan</label><select id="pn-kepatuhan" class="w-full border rounded-lg px-3 py-2 text-sm"><option>Baik</option><option>Cukup</option><option>Kurang</option></select>
+      </div>
+      <div>
+       <label class="block text-sm font-medium mb-1" for="pn-kelancaran">Kelancaran</label><select id="pn-kelancaran" class="w-full border rounded-lg px-3 py-2 text-sm"><option>Baik</option><option>Cukup</option><option>Kurang</option></select>
+      </div>
+      <div>
+       <label class="block text-sm font-medium mb-1" for="pn-makhroj">Makhroj</label><select id="pn-makhroj" class="w-full border rounded-lg px-3 py-2 text-sm"><option>Baik</option><option>Cukup</option><option>Kurang</option></select>
+      </div>
+      <div>
+       <label class="block text-sm font-medium mb-1" for="pn-tajwid">Tajwid</label><select id="pn-tajwid" class="w-full border rounded-lg px-3 py-2 text-sm"><option>Baik</option><option>Cukup</option><option>Kurang</option></select>
+      </div>
+      <div>
+       <label class="block text-sm font-medium mb-1" for="pn-menulis">Menulis</label><select id="pn-menulis" class="w-full border rounded-lg px-3 py-2 text-sm"><option>Baik</option><option>Cukup</option><option>Kurang</option></select>
+      </div>
+      <div>
+       <label class="block text-sm font-medium mb-1" for="pn-ekstra">Ekstra</label><select id="pn-ekstra" class="w-full border rounded-lg px-3 py-2 text-sm"><option>Baik</option><option>Cukup</option><option>Kurang</option></select>
+      </div>
+      <div class="md:col-span-2">
+       <label class="block text-sm font-medium mb-1" for="pn-catatan">Catatan Guru</label><textarea id="pn-catatan" rows="2" class="w-full border rounded-lg px-3 py-2 text-sm"></textarea>
+      </div>
+     </div><button type="submit" data-template-id="btn-simpan-pn" class="canva-button px-5 py-2 rounded-lg text-sm font-medium"></button> <span id="pn-loading" class="hidden ml-2 text-gray-500 text-sm">Menyimpan...</span>
+     <div id="pn-error" class="hidden text-red-600 text-sm mt-1"></div>
+    </form>
+    <div class="overflow-x-auto">
+     <table id="tbl-penilaian" class="w-full text-sm hidden">
+      <thead class="bg-gray-100">
+       <tr>
+        <th class="px-3 py-2 text-left">Nama</th>
+        <th class="px-3 py-2">Kedisiplinan</th>
+        <th class="px-3 py-2">Aktifitas</th>
+        <th class="px-3 py-2">Inisiatif</th>
+        <th class="px-3 py-2">Ketelitian</th>
+        <th class="px-3 py-2">Kepatuhan</th>
+        <th class="px-3 py-2">Kelancaran</th>
+        <th class="px-3 py-2">Makhroj</th>
+        <th class="px-3 py-2">Tajwid</th>
+        <th class="px-3 py-2">Menulis</th>
+        <th class="px-3 py-2">Ekstra</th>
+        <th class="px-3 py-2">Catatan</th>
+        <th class="px-3 py-2"></th>
+       </tr>
+      </thead>
+      <tbody id="tbody-penilaian"></tbody>
+     </table>
+    </div>
+    <p id="empty-penilaian" data-template-id="empty-penilaian" class="canva-text text-center py-6"></p>
+   </section>
+  </main><!-- Delete confirm modal -->
+  <div id="confirm-modal" class="hidden fixed inset-0 bg-black/40 flex items-center justify-center z-50 p-4">
+   <div class="bg-white rounded-xl p-6 max-w-sm w-full space-y-4">
+    <p id="confirm-text" class="font-medium text-sm"></p>
+    <div class="flex gap-3 justify-end"><button id="cancel-del" class="px-4 py-2 rounded-lg border text-sm">Batal</button> <button id="confirm-del" class="px-4 py-2 rounded-lg bg-red-600 text-white text-sm">Hapus</button>
+    </div>
+   </div>
+  </div>
+  <script src="/_sdk/editing_sdk.js"></script>
+  <script src="/_sdk/data_sdk.js"></script>
   <script>
+    let allData = [];
+    let pendingDelete = null;
 
-    function toggleTheme(){
-      document.body.classList.toggle("light");
+    // Tabs
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.tab-btn').forEach(b => { b.classList.remove('tab-active'); b.classList.add('tab-inactive'); });
+        btn.classList.add('tab-active'); btn.classList.remove('tab-inactive');
+        ['kehadiran','hafalan','penilaian'].forEach(t => {
+          document.getElementById('tab-'+t).classList.toggle('hidden', t !== btn.dataset.tab);
+        });
+      });
+    });
+
+    const handler = {
+      onDataChanged(data) {
+        allData = data;
+        renderAll(data);
+      }
+    };
+
+    function renderAll(data) {
+      const kh = data.filter(d => d.tipe === 'kehadiran');
+      const hf = data.filter(d => d.tipe === 'hafalan');
+      const pn = data.filter(d => d.tipe === 'penilaian');
+      renderTable('kehadiran', kh, ['nama_santri','tanggal','status_kehadiran','ekstra_kehadiran']);
+      renderTable('hafalan', hf, ['nama_santri','surat_hafalan','nilai_hafalan']);
+      renderTable('penilaian', pn, ['nama_santri','kedisiplinan','aktifitas','inisiatif','ketelitian','kepatuhan','kelancaran','makhroj','tajwid','menulis','ekstra_penilaian','catatan_guru']);
     }
 
-  </script>
+    function renderTable(type, data, cols) {
+      const tbody = document.getElementById('tbody-'+type);
+      const tbl = document.getElementById('tbl-'+type);
+      const empty = document.getElementById('empty-'+type);
+      if (!data.length) { tbl.classList.add('hidden'); empty.classList.remove('hidden'); return; }
+      tbl.classList.remove('hidden'); empty.classList.add('hidden');
+      tbody.innerHTML = '';
+      data.forEach(item => {
+        const tr = document.createElement('tr');
+        tr.className = 'border-b';
+        let html = '';
+        cols.forEach(c => {
+          let v = item[c];
+          if (typeof v === 'boolean') v = v ? '✓' : '✗';
+          html += `<td class="px-3 py-2 ${c==='nama_santri'?'text-left':'text-center'}">${esc(v ?? '')}</td>`;
+        });
+        html += `<td class="px-3 py-2 text-center"><button class="text-red-500 hover:text-red-700 del-btn text-xs" title="Hapus">✕</button></td>`;
+        tr.innerHTML = html;
+        tr.querySelector('.del-btn').onclick = () => confirmDel(item);
+        tbody.appendChild(tr);
+      });
+    }
 
-</body>
-  </html>
+    function esc(s) { const d=document.createElement('div'); d.textContent=String(s); return d.innerHTML; }
+
+    function confirmDel(item) {
+      pendingDelete = item;
+      document.getElementById('confirm-text').textContent = `Hapus data ${item.nama_santri}?`;
+      document.getElementById('confirm-modal').classList.remove('hidden');
+    }
+    document.getElementById('cancel-del').onclick = () => { document.getElementById('confirm-modal').classList.add('hidden'); pendingDelete=null; };
+    document.getElementById('confirm-del').onclick = async () => {
+      if(!pendingDelete) return;
+      const btn=document.getElementById('confirm-del'); btn.disabled=true; btn.textContent='...';
+      await window.dataSdk.delete(pendingDelete);
+      btn.disabled=false; btn.textContent='Hapus';
+      document.getElementById('confirm-modal').classList.add('hidden'); pendingDelete=null;
+    };
+
+    // Form handlers
+    async function submitForm(formId, getData, loadingId, errorId) {
+      const form = document.getElementById(formId);
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const errEl = document.getElementById(errorId);
+        errEl.classList.add('hidden');
+        if (allData.length >= 999) { errEl.textContent='Batas 999 data tercapai.'; errEl.classList.remove('hidden'); return; }
+        const btn = form.querySelector('button[type="submit"]');
+        const ld = document.getElementById(loadingId);
+        btn.disabled=true; ld.classList.remove('hidden');
+        const result = await window.dataSdk.create(getData());
+        btn.disabled=false; ld.classList.add('hidden');
+        if(result.isOk) form.reset(); else { errEl.textContent='Gagal menyimpan.'; errEl.classList.remove('hidden'); }
+      });
+    }
+
+    submitForm('form-kehadiran', () => ({
+      tipe:'kehadiran', nama_santri: document.getElementById('kh-nama').value,
+      tanggal: document.getElementById('kh-tanggal').value,
+      status_kehadiran: document.getElementById('kh-status').value,
+      ekstra_kehadiran: document.getElementById('kh-ekstra').checked
+    }), 'kh-loading', 'kh-error');
+
+    submitForm('form-hafalan', () => ({
+      tipe:'hafalan', nama_santri: document.getElementById('hf-nama').value,
+      surat_hafalan: document.getElementById('hf-surat').value,
+      nilai_hafalan: Number(document.getElementById('hf-nilai').value) || 0
+    }), 'hf-loading', 'hf-error');
+
+    submitForm('form-penilaian', () => ({
+      tipe:'penilaian', nama_santri: document.getElementById('pn-nama').value,
+      kedisiplinan: document.getElementById('pn-kedisiplinan').value,
+      aktifitas: document.getElementById('pn-aktifitas').value,
+      inisiatif: document.getElementById('pn-inisiatif').value,
+      ketelitian: document.getElementById('pn-ketelitian').value,
+      kepatuhan: document.getElementById('pn-kepatuhan').value,
+      kelancaran: document.getElementById('pn-kelancaran').value,
+      makhroj: document.getElementById('pn-makhroj').value,
+      tajwid: document.getElementById('pn-tajwid').value,
+      menulis: document.getElementById('pn-menulis').value,
+      ekstra_penilaian: document.getElementById('pn-ekstra').value,
+      catatan_guru: document.getElementById('pn-catatan').value
+    }), 'pn-loading', 'pn-error');
+
+    (async () => {
+      const r = await window.dataSdk.init(handler);
+      if(!r.isOk) { document.getElementById('kh-error').textContent='Gagal memuat data.'; document.getElementById('kh-error').classList.remove('hidden'); }
+    })();
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a094e4c7e822c261',t:'MTc4MTA1Nzk5Mg=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
