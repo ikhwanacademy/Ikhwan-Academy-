@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="id">
+ <head><script src="/_sdk/telemetry_sdk.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rekap Harian Santri</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'DM Sans', sans-serif; }
+    .tab-active { border-bottom: 3px solid #16a34a; color: #14532d; font-weight: 700; }
+    .tab-inactive { color: #6b7280; }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js" type="text/javascript"></script>
+  <script src="/_sdk/resizing_sdk.js" type="text/javascript"></script>
+ </head>
+ <body data-template-id="__page-root" class="min-h-screen w-full">
+  <header class="p-6 border-b">
+   <div class="max-w-6xl mx-auto">
+    <h1 data-template-id="page-title" class="canva-text font-bold"></h1>
+    <p data-template-id="page-subtitle" class="canva-text mt-1"></p>
+   </div>
+  </header>
+  <main class="max-w-6xl mx-auto p-6">
+   <nav class="flex gap-6 border-b mb-6"><button type="button" class="tab-btn tab-active pb-2 px-1" data-tab="kehadiran">Kehadiran</button> <button type="button" class="tab-btn tab-inactive pb-2 px-1" data-tab="hafalan">Hafalan</button> <button type="button" class="tab-btn tab-inactive pb-2 px-1" data-tab="penilaian">Penilaian</button>
+   </nav><!-- KEHADIRAN -->
+   <section id="tab-kehadiran" class="space-y-6">
+    <form id="form-kehadiran" class="p-5 rounded-xl border space-y-4" data-template-id="form-kehadiran">
+     <h2 data-template-id="form-kehadiran-title" class="canva-text font-bold mb-2"></h2>
+     <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+      <div>
+       <label class="block text-sm font-medium mb-1" for="kh-nama">Nama</label><input id="kh-nama" type="text" required class="w-full border rounded-lg px-3 py-2 text-sm">
+      </div>
+      <div>
+       <label class="block text-sm font-medium mb-1" for="kh-tanggal">Tanggal</label><input id="kh-tanggal" type="date" required class="w-full border rounded-lg px-3 py-2 text-sm">
+      </div>
+      <div>
+       <label class="block text-sm font-medium mb-1" for="kh-status">Status</label> <select id="kh-status" class="w-full border rounded-lg px-3 py-2 text-sm"> <option value="Hadir">Hadir</option><option value="Sakit">Sakit</option><option value="Izin">Izin</option><option value="Alfa">Alfa</option> </select>
+      </div>
+      <div>
+       <label class="block text-sm font-medium mb-1 flex items-center gap-2"><input type="checkbox" id="kh-ekstra"> Ekstra</label>
+      </div>
+     </div><button type="submit" data-template-id="btn-simpan-kh" class="canva-button px-5 py-2 rounded-lg text-sm font-medium"></button> <span id="kh-loading" class="hidden ml-2 text-gray-500 text-sm">Menyimpan...</span>
+     <div id="kh-error" class="hidden text-red-600 text-sm mt-1"></div>
+    </form>
+    <div class="overflow-x-auto">
+     <table id="tbl-kehadiran" class="w-full text-sm hidden">
+      <thead class="bg-gray-100">
+       <tr>
+        <th class="px-3 py-2 text-left">Nama</th>
+        <th class="px-3 py-2">Tanggal</th>
+        <th class="px-3 py-2">Status</th>
+        <th class="px-3 py-2">Ekstra</th>
+        <th class="px-3 py-2"></th>
+       </tr>
+      </thead>
+      <tbody id="tbody-kehadiran"></tbody>
+     </table>
+    </div>
+    <p id="empty-kehadiran" data-template-id="empty-kehadiran" class="canva-text text-center py-6"></p>
+   </section><!-- HAFALAN -->
+   <section id="tab-hafalan" class="space-y-6 hidden">
+    <form id="form-hafalan" class="p-5 rounded-xl border space-y-4" data-template-id="form-hafalan">
+     <h2 data-template-id="form-hafalan-title" class="canva-text font-bold mb-2"></h2>
+     <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div>
+       <label class="block text-sm font-medium mb-1" for="hf-nama">Nama</label><input id="hf-nama" type="text" required class="w-full border rounded-lg px-3 py-2 text-sm">
+      </div>
+      <div>
+       <label class="block text-sm font-medium mb-1" for="hf-surat">Surat</label> <select id="hf-surat" class="w-full border rounded-lg px-3 py-2 text-sm"> <option>Al Muthaffifin</option><option>Al Infithar</option><option>At Takwiir</option><option>'Abasa</option><option>An Nazi'at</option><option>An Naba'</option> </select>
+      </div>
+      <div>
+       <label class="block text-sm font-medium mb-1" for="hf-nilai">Nilai</label><input id="hf-nilai" type="number" min="0" max="100" class="w-full border rounded-lg px-3 py-2 text-sm">
+      </div>
+     </div><button type="submit" data-template-id="btn-simpan-hf" class="canva-button px-5 py-2 rounded-lg text-sm font-medium"></button> <span id="hf-loading" class="hidden ml-2 text-gray-500 text-sm">Menyimpan...</span>
+     <div id="hf-error" class="hidden text-red-600 text-sm mt-1"></div>
+    </form>
+    <div class="overflow-x-auto">
+     <table id="tbl-hafalan" class="w-full text-sm hidden">
+      <thead class="bg-gray-100">
+       <tr>
+        <th class="px-3 py-2 text-left">Nama</th>
+        <th class="px-3 py-2">Surat</th>
+        <th class="px-3 py-2">Nilai</th>
+        <th class="px-3 py-2"></th>
+       </tr>
+      </thead>
+      <tbody id="tbody-hafalan"></tbody>
+     </table>
+    </div>
+    <p id="empty-hafalan" data-template-id="empty-hafalan" class="canva-text text-center py-6"></p>
+   </section><!-- PENILAIAN -->
+   <section id="tab-penilaian" class="space-y-6 hidden">
+    <form id="form-penilaian" class="p-5 rounded-xl border space-y-4" data-template-id="form-penilaian">
+     <h2 data-template-id="form-penilaian-title" class="canva-text font-bold mb-2"></h2>
+     <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div>
+       <label class="block text-sm font-medium mb-1" for="pn-nama">Nama</label><input id="pn-nama" type="text" required class="w-full border rounded-lg px-3 py-2 text-sm">
+      </div>
+      <div>
+       <label class="block text-sm font-medium mb-1" for="pn-kedisiplinan">Kedisiplinan</label><select id="pn-kedisiplinan" class="w-full border rounded-lg px-3 py-2 text-sm"><option>Baik</option><option>Cukup</option><option>Kurang</option></select>
+      </div>
+      <div>
+       <label class="block text-sm font-medium mb-1" for="pn-aktifitas">Aktifitas</label><select id="pn-aktifitas" class="w-full border rounded-lg px-3 py-2 text-sm"><option>Baik</option><option>Cukup</option><option>Kurang</option></select>
+      </div>
+      <div>
+       <label class="block text-sm font-medium mb-1" for="pn-inisiatif">Inisiatif</label><select id="pn-inisiatif" class="w-full border rounded-lg px-3 py-2 text-sm"><option>Baik</option><option>Cukup</option><option>Kurang</option></select>
+      </div>
+      <div>
+       <label class="block text-sm font-medium mb-1" for="pn-ketelitian">Ketelitian</label><select id="pn-ketelitian" class="w-full border rounded-lg px-3 py-2 text-sm"><option>Baik</option><option>Cukup</option><option>Kurang</option></select>
+      </div>
+      <div>
+       <label class="block text-sm font-medium mb-1" for="pn-kepatuhan">Kepatuhan</label><select id="pn-kepatuhan" class="w-full border rounded-lg px-3 py-2 text-sm"><option>Baik</option><option>Cukup</option><option>Kurang</option></select>
+      </div>
+      <div>
+       <label class="block text-sm font-medium mb-1" for="pn-kelancaran">Kelancaran</label><select id="pn-kelancaran" class="w-full border rounded-lg px-3 py-2 text-sm"><option>Baik</option><option>Cukup</option><option>Kurang</option></select>
+      </div>
+      <div>
+       <label class="block text-sm font-medium mb-1" for="pn-makhroj">Makhroj</label><select id="pn-makhroj" class="w-full border rounded-lg px-3 py-2 text-sm"><option>Baik</option><option>Cukup</option><option>Kurang</option></select>
+      </div>
+      <div>
+       <label class="block text-sm font-medium mb-1" for="pn-tajwid">Tajwid</label><select id="pn-tajwid" class="w-full border rounded-lg px-3 py-2 text-sm"><option>Baik</option><option>Cukup</option><option>Kurang</option></select>
+      </div>
+      <div>
+       <label class="block text-sm font-medium mb-1" for="pn-menulis">Menulis</label><select id="pn-menulis" class="w-full border rounded-lg px-3 py-2 text-sm"><option>Baik</option><option>Cukup</option><option>Kurang</option></select>
+      </div>
+      <div>
+       <label class="block text-sm font-medium mb-1" for="pn-ekstra">Ekstra</label><select id="pn-ekstra" class="w-full border rounded-lg px-3 py-2 text-sm"><option>Baik</option><option>Cukup</option><option>Kurang</option></select>
+      </div>
+      <div class="md:col-span-2">
+       <label class="block text-sm font-medium mb-1" for="pn-catatan">Catatan Guru</label><textarea id="pn-catatan" rows="2" class="w-full border rounded-lg px-3 py-2 text-sm"></textarea>
+      </div>
+     </div><button type="submit" data-template-id="btn-simpan-pn" class="canva-button px-5 py-2 rounded-lg text-sm font-medium"></button> <span id="pn-loading" class="hidden ml-2 text-gray-500 text-sm">Menyimpan...</span>
+     <div id="pn-error" class="hidden text-red-600 text-sm mt-1"></div>
+    </form>
+    <div class="overflow-x-auto">
+     <table id="tbl-penilaian" class="w-full text-sm hidden">
+      <thead class="bg-gray-100">
+       <tr>
+        <th class="px-3 py-2 text-left">Nama</th>
+        <th class="px-3 py-2">Kedisiplinan</th>
+        <th class="px-3 py-2">Aktifitas</th>
+        <th class="px-3 py-2">Inisiatif</th>
+        <th class="px-3 py-2">Ketelitian</th>
+        <th class="px-3 py-2">Kepatuhan</th>
+        <th class="px-3 py-2">Kelancaran</th>
+        <th class="px-3 py-2">Makhroj</th>
+        <th class="px-3 py-2">Tajwid</th>
+        <th class="px-3 py-2">Menulis</th>
+        <th class="px-3 py-2">Ekstra</th>
+        <th class="px-3 py-2">Catatan</th>
+        <th class="px-3 py-2"></th>
+       </tr>
+      </thead>
+      <tbody id="tbody-penilaian"></tbody>
+     </table>
+    </div>
+    <p id="empty-penilaian" data-template-id="empty-penilaian" class="canva-text text-center py-6"></p>
+   </section>
+  </main><!-- Delete confirm modal -->
+  <div id="confirm-modal" class="hidden fixed inset-0 bg-black/40 flex items-center justify-center z-50 p-4">
+   <div class="bg-white rounded-xl p-6 max-w-sm w-full space-y-4">
+    <p id="confirm-text" class="font-medium text-sm"></p>
+    <div class="flex gap-3 justify-end"><button id="cancel-del" class="px-4 py-2 rounded-lg border text-sm">Batal</button> <button id="confirm-del" class="px-4 py-2 rounded-lg bg-red-600 text-white text-sm">Hapus</button>
+    </div>
+   </div>
+  </div>
+  <script src="/_sdk/editing_sdk.js"></script>
+  <script src="/_sdk/data_sdk.js"></script>
+  <script>
+    let allData = [];
+    let pendingDelete = null;
+
+    // Tabs
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.tab-btn').forEach(b => { b.classList.remove('tab-active'); b.classList.add('tab-inactive'); });
+        btn.classList.add('tab-active'); btn.classList.remove('tab-inactive');
+        ['kehadiran','hafalan','penilaian'].forEach(t => {
+          document.getElementById('tab-'+t).classList.toggle('hidden', t !== btn.dataset.tab);
+        });
+      });
+    });
+
+    const handler = {
+      onDataChanged(data) {
+        allData = data;
+        renderAll(data);
+      }
+    };
+
+    function renderAll(data) {
+      const kh = data.filter(d => d.tipe === 'kehadiran');
+      const hf = data.filter(d => d.tipe === 'hafalan');
+      const pn = data.filter(d => d.tipe === 'penilaian');
+      renderTable('kehadiran', kh, ['nama_santri','tanggal','status_kehadiran','ekstra_kehadiran']);
+      renderTable('hafalan', hf, ['nama_santri','surat_hafalan','nilai_hafalan']);
+      renderTable('penilaian', pn, ['nama_santri','kedisiplinan','aktifitas','inisiatif','ketelitian','kepatuhan','kelancaran','makhroj','tajwid','menulis','ekstra_penilaian','catatan_guru']);
+    }
+
+    function renderTable(type, data, cols) {
+      const tbody = document.getElementById('tbody-'+type);
+      const tbl = document.getElementById('tbl-'+type);
+      const empty = document.getElementById('empty-'+type);
+      if (!data.length) { tbl.classList.add('hidden'); empty.classList.remove('hidden'); return; }
+      tbl.classList.remove('hidden'); empty.classList.add('hidden');
+      tbody.innerHTML = '';
+      data.forEach(item => {
+        const tr = document.createElement('tr');
+        tr.className = 'border-b';
+        let html = '';
+        cols.forEach(c => {
+          let v = item[c];
+          if (typeof v === 'boolean') v = v ? '✓' : '✗';
+          html += `<td class="px-3 py-2 ${c==='nama_santri'?'text-left':'text-center'}">${esc(v ?? '')}</td>`;
+        });
+        html += `<td class="px-3 py-2 text-center"><button class="text-red-500 hover:text-red-700 del-btn text-xs" title="Hapus">✕</button></td>`;
+        tr.innerHTML = html;
+        tr.querySelector('.del-btn').onclick = () => confirmDel(item);
+        tbody.appendChild(tr);
+      });
+    }
+
+    function esc(s) { const d=document.createElement('div'); d.textContent=String(s); return d.innerHTML; }
+
+    function confirmDel(item) {
+      pendingDelete = item;
+      document.getElementById('confirm-text').textContent = `Hapus data ${item.nama_santri}?`;
+      document.getElementById('confirm-modal').classList.remove('hidden');
+    }
+    document.getElementById('cancel-del').onclick = () => { document.getElementById('confirm-modal').classList.add('hidden'); pendingDelete=null; };
+    document.getElementById('confirm-del').onclick = async () => {
+      if(!pendingDelete) return;
+      const btn=document.getElementById('confirm-del'); btn.disabled=true; btn.textContent='...';
+      await window.dataSdk.delete(pendingDelete);
+      btn.disabled=false; btn.textContent='Hapus';
+      document.getElementById('confirm-modal').classList.add('hidden'); pendingDelete=null;
+    };
+
+    // Form handlers
+    async function submitForm(formId, getData, loadingId, errorId) {
+      const form = document.getElementById(formId);
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const errEl = document.getElementById(errorId);
+        errEl.classList.add('hidden');
+        if (allData.length >= 999) { errEl.textContent='Batas 999 data tercapai.'; errEl.classList.remove('hidden'); return; }
+        const btn = form.querySelector('button[type="submit"]');
+        const ld = document.getElementById(loadingId);
+        btn.disabled=true; ld.classList.remove('hidden');
+        const result = await window.dataSdk.create(getData());
+        btn.disabled=false; ld.classList.add('hidden');
+        if(result.isOk) form.reset(); else { errEl.textContent='Gagal menyimpan.'; errEl.classList.remove('hidden'); }
+      });
+    }
+
+    submitForm('form-kehadiran', () => ({
+      tipe:'kehadiran', nama_santri: document.getElementById('kh-nama').value,
+      tanggal: document.getElementById('kh-tanggal').value,
+      status_kehadiran: document.getElementById('kh-status').value,
+      ekstra_kehadiran: document.getElementById('kh-ekstra').checked
+    }), 'kh-loading', 'kh-error');
+
+    submitForm('form-hafalan', () => ({
+      tipe:'hafalan', nama_santri: document.getElementById('hf-nama').value,
+      surat_hafalan: document.getElementById('hf-surat').value,
+      nilai_hafalan: Number(document.getElementById('hf-nilai').value) || 0
+    }), 'hf-loading', 'hf-error');
+
+    submitForm('form-penilaian', () => ({
+      tipe:'penilaian', nama_santri: document.getElementById('pn-nama').value,
+      kedisiplinan: document.getElementById('pn-kedisiplinan').value,
+      aktifitas: document.getElementById('pn-aktifitas').value,
+      inisiatif: document.getElementById('pn-inisiatif').value,
+      ketelitian: document.getElementById('pn-ketelitian').value,
+      kepatuhan: document.getElementById('pn-kepatuhan').value,
+      kelancaran: document.getElementById('pn-kelancaran').value,
+      makhroj: document.getElementById('pn-makhroj').value,
+      tajwid: document.getElementById('pn-tajwid').value,
+      menulis: document.getElementById('pn-menulis').value,
+      ekstra_penilaian: document.getElementById('pn-ekstra').value,
+      catatan_guru: document.getElementById('pn-catatan').value
+    }), 'pn-loading', 'pn-error');
+
+    (async () => {
+      const r = await window.dataSdk.init(handler);
+      if(!r.isOk) { document.getElementById('kh-error').textContent='Gagal memuat data.'; document.getElementById('kh-error').classList.remove('hidden'); }
+    })();
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a094e4c7e822c261',t:'MTc4MTA1Nzk5Mg=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
